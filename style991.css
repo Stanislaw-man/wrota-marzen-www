@@ -1,0 +1,173 @@
+/* ==========================================
+   RESET, TŁO I BLOKADA OKNA PRZEGLĄDARKI
+   ========================================== */
+html, body {           background-image: url("MapaPiracka3.jpg"); /* Ścieżka do Twojej nowej mapy */
+                                  background-repeat: repeat;             /* Mapa będzie się płynnie powtarzać w pionie i poziomie */
+                                  background-attachment: fixed;          /* Opcjonalnie: mapa zostanie w miejscu podczas przewijania strony, co daje świetny efekt głębi! */
+                                   background-color: #ffffff;             /* Kolor awaryjny (zbliżony do Twojego obecnego brązu), gdyby grafika się długo ładowała */
+    margin: 0;                 /* Kasuje domyślne marginesy przeglądarki wokół krawędzi ekranu */
+    padding: 0;                /* Kasuje wewnętrzne wcięcia przeglądarki */
+   /*    background-color: #5c3a21; /* Głęboki, piracki brąz tworzący boczne pionowe słupy */
+    width: 100%;               /* Rozciąga bazę strony na pełną szerokość monitora */
+    height: 100vh;             /* Blokuje wysokość bazy idealnie do dolnej krawędzi ekranu */
+    overflow: hidden;          /* BEZKOMPROMISOWO: Odcina i ukrywa pionowy oraz poziomy pasek przewijania */
+}
+
+/* ==========================================
+   KONTENER GŁÓWNY (BETONOWY FUNDAMENT)
+   ========================================== */
+.kontener-glowny {
+    width: 1000px;             /* Sztywna szerokość dopasowana idealnie do Pana grafiki z GIMPa */
+    height: 100vh;             /* Rozciąga kontener pionowo od samej góry do paska zadań Windows */
+    margin: 0 auto;            /* KLUCZ: Automatycznie i sztywno centruje cały baner idealnie na środku ekranu */
+    position: relative;        /* ANCHOR (KOTWICA): Tworzy wewnętrzny układ współrzędnych dla okienek i przycisku */
+    box-sizing: border-box;    /* Wlicza obramowania i dopełnienia do ogólnej szerokości, zapobiegając rozszerzaniu */
+    overflow: hidden;          /* Dodatkowe zabezpieczenie przed "wystawaniem" elementów poza obszar baneru */
+}
+
+/* ==========================================
+   SAM OBRAZ BANERU (PODKŁAD GRAFICZNY)
+   ========================================== */
+.podklad-banera {
+    position: absolute;
+    top: 0 !important;
+    left: 0 !important;
+    width: 101% !important;    /* Powiększamy obrazek o 3%, aby fizycznie "urósł" i zakrył szparę */
+    height: auto !important;
+    display: block !important;
+    z-index: 1;
+}
+
+/* ==========================================
+   LEWE OKNO KEN BURNS
+   ========================================== */
+.header1 {
+    width: 150px;              /* Stała szerokość lewego okna z ruchomymi slajdami */
+    height: 100px;             /* Stała wysokość lewego okna */
+    position: absolute;        /* Odczepia okno z normalnego układu i pozwala sterować nim za pomocą pikseli */
+    top: 60px;                 /* Stała odległość górnej krawędzi okienka od górnej krawędzi baneru */
+    left: 22px;                /* KOTWICA PIKSELOWA: Stała odległość od lewej krawędzi baneru (odporna na zoom), było 15px; */
+    border-radius: 30px;       /* Silne zaokrąglenie rogów, nadające okienku nowoczesny, owalny kształt */
+    border: 5px solid #fff00f; /* Gruba, podświetlana żółta ramka wokół ruchomego okna */
+    overflow: hidden;          /* Przycina zdjęcia wewnątrz, by nie wystawały poza zaokrąglone rogi ramki */
+    z-index: 10;               /* Wyższa warstwa, aby okienko unosiło się nad podkładem baneru */
+}
+
+/* ==========================================
+   PRAWE OKNO KEN BURNS
+   ========================================== */
+.header {
+    width: 150px;              /* Stała szerokość prawego okna z ruchomymi slajdami */
+    height: 100px;             /* Stała wysokość prawego okna */
+    position: absolute;        /* Odczepia okno z normalnego układu i pozwala sterować nim za pomocą pikseli */
+    top: 60px;                 /* Stała odległość górnej krawędzi okienka od górnej krawędzi baneru */
+    left: 815px;               /* KOTWICA PIKSELOWA: Stała odległość od lewej krawędzi baneru (symetryczna do lewego) */
+    border-radius: 30px;       /* Silne zaokrąglenie rogów prawego okienka */
+    border: 5px solid #fff00f; /* Gruba, podświetlana żółta ramka wokół prawego okna */
+    overflow: hidden;          /* Przycina zdjęcia wewnątrz, by nie wystawały poza zaokrąglone rogi ramki */
+    z-index: 10;               /* Wyższa warstwa, aby okienko unosiło się nad podkładem baneru */
+}
+
+/* ==========================================
+   ANIMACJA SLAJDÓW (EFEKT KEN BURNS)
+   ========================================== */
+.slideshow-img-anim {
+    width: 100%;               /* Rozciąga pojedyncze zdjęcie na całą szerokość ramki okna (150px) */
+    height: 100%;              /* Rozciąga pojedyncze zdjęcie na całą wysokość ramki okna (100px) */
+    object-fit: cover;         /* Inteligentnie docina zdjęcie, aby wypełniło okno bez zniekształceń i spłaszczeń */
+    position: absolute;        /* Nakłada wszystkie 4 zdjęcia dokładnie jedno na drugie */
+    opacity: 0;                /* Wyjściowo chowa zdjęcia (są przezroczyste), przygotowując pod płynne przenikanie */
+    transform: scale(1);       /* Początkowy, naturalny rozmiar zdjęcia przed rozpoczęciem powiększania */
+    animation: animacjaKenBurns 16s infinite ease-in-out; /* Przypisuje filmową animację kinową trwającą 16 sekund w nieskończoność */
+}
+
+/* Opóźnienia startu animacji dla poszczególnych zdjęć (tworzą kolejkę wyświetlania) */
+.img-1, .img-5 { animation-delay: 0s; }  /* Pierwsze zdjęcie rusza natychmiast */
+.img-2, .img-6 { animation-delay: 4s; }  /* Drugie zdjęcie czeka 4 sekundy */
+.img-3, .img-7 { animation-delay: 8s; }  /* Trzecie zdjęcie czeka 8 sekund */
+.img-4, .img-8 { animation-delay: 12s; } /* Czwarte zdjęcie czeka 12 sekund */
+
+/* Definicja kinowego efektu Ken Burns (Klatki kluczowe animacji) */
+@keyframes animacjaKenBurns {
+    0% {
+        opacity: 0;            /* Zdjęcie zaczyna jako całkowicie niewidoczne */
+        transform: scale(1.0); /* Zaczyna od oryginalnego rozmiaru */
+    }
+    5% {
+        opacity: 1;            /* W ciągu pierwszych sekund płynnie staje się w pełni widoczne */
+    }
+    25% {
+        opacity: 1;            /* Przez większość czasu pozostaje w pełni widoczne i powoli rośnie */
+    }
+    30% {
+        opacity: 0;            /* Płynnie zanika, ustępując miejsca kolejnemu zdjęciu w kolejce */
+        transform: scale(1.15);/* W tym samym momencie osiąga maksymalne powiększenie o 15% */
+    }
+    100% {
+        opacity: 0;            /* Pozostaje niewidoczne w tle, czekając na swoją kolej w następnym cyklu */
+    }
+}
+
+/* ==========================================
+   ZMNIEJSZONY I CENTRALNY PRZYCISK
+   ========================================== */
+.button { 
+    position: absolute;        /* Odczepia przycisk od tła, pozwalając na precyzyjne rzemieślnicze pozycjonowanie */
+    top: 505px;                /* KOTWICA PIKSELOWA: Stała, pancerna odległość pionowa od góry baneru */
+    left: 650px;               /* KOTWICA PIKSELOWA: Stała, pancerna odległość pozioma od lewej krawędzi baneru */
+    transform: translate(-50%, -50%); /* Przesuwa punkt mocowania do idealnego środka przycisku, zapewniając stabilność */
+    width: 160px;              /* Szerokość przycisku dopasowana pod dwie linijki tekstu, było 150px; */
+    height: 75px;              /* Zgrabna wysokość przycisku */
+    padding-top: 12px;         /* Wewnętrzny bezpieczny margines tekstu od górnej krawędzi przycisku */
+    padding-bottom: 12px;      /* Wewnętrzny bezpieczny margines tekstu od dolnej krawędzi przycisku */
+    border-radius: 40px;       /* Maksymalne zaokrąglenie boków, tworzące elegancką, owalną kapsułę */
+    background: #9b5d03;       /* Ciemnozłoty/brązowy kolor wypełnienia wnętrza przycisku */
+    border: 8px double yellow;/* Pańska pożądana, elegancka, podwójna żółta obwódka królewska, była wartość: border: 10px double yellow */
+    cursor: pointer;           /* Zmienia kursor myszy w rączkę z palcem, sugerując użytkownikowi klikalność */
+    z-index: 20;               /* Najwyższa warstwa na stronie – przycisk musi być zawsze na wierzchu, by reagować */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 1.0); /* Głęboki, czarny cień rzemieślniczy, dający efekt trójwymiarowości */
+    display: flex;             /* Włącza nowoczesny układ elastyczny wewnątrz samego przycisku */
+    align-items: center;       /* Idealnie centruje napis w osi pionowej wewnątrz przycisku */
+    justify-content: center;   /* Idealnie centruje napis w osi poziomej wewnątrz przycisku */
+}
+
+/* ==========================================
+   TEKST WEWNĄTRZ PRZYCISKU
+   ========================================== */
+.buttontext {
+    color: yellow;             /* Złoto-żółty kolor liter pasujący do podwójnej obwódki */
+    font-family: "Comic Sans MS", sans-serif; /* Klimatyczne, stylizowane pirackie czcionki, było: font-family: "Trattatello", "Franklin Gothic", sans-serif; */
+    font-size: 18px;           /* Czytelna i wyraźna wielkość liter dla hasła "Sezamie! Otwórz się!", było 20px dla "Trattatello", "Franklin Gothic"  */
+    font-style: italic;        /* Eleganckie pochylenie pisma (kursywa) */
+    font-weight: bold;         /* Pogrubienie tekstu zwiększające jego widoczność */
+    line-height: 1.3;          /* Zwarta, rzemieślnicza interlinia chroniąca przed rozjechaniem dwóch linijek, było 1.2;  */
+    margin: 0;                 /* Kasuje ukryte, domyślne marginesy tekstu wstrzykiwane przez przeglądarki */
+    padding: 0;                /* Kasuje wszelkie wewnętrzne przesunięcia tekstu */
+    text-align: center;        /* Centruje tekst w poziomie, gdy jest rozbity na dwa wiersze */
+}
+
+/* ==========================================
+   STYLIZACJA NOWEGO TEKSTU "I SKARBY SWE UKAŻ"
+   ========================================== */
+.aktywne-skarby {
+    color: #452603 !important;       /* KOLOR TEKSTU: Tutaj wpisujesz nowy kolor (np. błyszcząca biel) */
+    font-family: "Comic Sans MS", sans-serif !important; /* KRÓJ CZCIONKI: Możesz zmienić na zupełnie inny styl */
+    font-size: 18px !important;      /* WIELKOŚĆ CZCIONKI: Dopasuj rozmiar (w pikselach), by tekst idealnie leżał */
+    font-style: italic !important;   /* REZYGNACJA Z KURSYWY: Zmień na 'normal' lub zostaw 'italic' */
+    font-weight: bold !important;     /* GRUBOŚĆ CZCIONKI: Wartości od 100 do 900 lub słownie 'bold' */
+    letter-spacing: 1px;             /* ODSTĘPY MIĘDZY LITERAMI: Dodatkowa opcja rozstrzelenia tekstu */
+    margin: 0;                 /* Kasuje ukryte, domyślne marginesy tekstu wstrzykiwane przez przeglądarki */
+    padding: 0;                /* Kasuje wszelkie wewnętrzne przesunięcia tekstu */
+    text-align: center;        /* Centruje tekst w poziomie, gdy jest rozbity na dwa wiersze */
+    line-height: 1.1;          /* Zwarta, rzemieślnicza interlinia chroniąca przed rozjechaniem dwóch linijek */	
+}
+	
+   /* ==========================================
+   EFEKT NAJECHANIA MYSZKĄ NA PRZYCISK
+   ========================================== */
+.button:hover { color: brown;
+    background: #fff00f;       /* Rozświetlony, jasny złoty/pomarańczowy kolor po najechaniu, było #ff9900 */
+    border-color: #9b5d03;     /* Królewska obwódka zmienia się z żółtej na błyszczącą biel, było #ffffff */
+    transition: 0.3s;          /* Płynne, eleganckie przejście zmiany kolorów zamiast gwałtownego skoku */
+}
+	

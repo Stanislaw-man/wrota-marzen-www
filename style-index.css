@@ -1,0 +1,414 @@
+html, body { background-image: url("Tworzenieszachownicy25x25.png"); } 
+
+
+/* GŁÓWNA SCENA - Teraz idealnie przygotowana pod mapę i szachownicę */
+.scena-piracka {
+    position: relative;
+    width: 1200px;
+    height: 950px;
+    border: 15px solid #2b1d14; /* Twoja brązowa ramka zewnętrzna */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    margin: 20px auto;
+    overflow: hidden; /* Upewnia się, że mapa nie wystaje poza zaokrąglone rogi ramki */
+    background-image: url("Tworzenieszachownicy25x25.png"); 
+}
+
+/* FORMATOWANIE MAPY TŁA */
+#mapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Dopasowuje obrazek mapy do wymiarów sceny */
+    z-index: 1; /* Mapa leży najniżej */
+}
+
+/* POZYCJONOWANIE ELEMENTÓW (Wszystkie dostają wyższy z-index, aby leżeć NA mapie) */
+
+#plakat {
+    position: absolute;
+    z-index: 2;
+    height: 75%;  
+    width: auto;
+    top: 7.5%;      
+    left: 6.6%;     
+    transform: skew(10deg, 5deg); 
+}
+
+
+
+.napis-explorer {
+    position: absolute;
+    top: 150px;
+    right: 150px;
+    font-size: 55px;
+    color: #ffd700;
+    text-shadow: 3px 3px #000;
+    letter-spacing: 5px;
+    transform: rotate(5deg);
+    z-index: 2;
+}
+
+.napis-rejs {
+    position: absolute;
+    top: 480px;
+    right: 100px;
+    font-size: 32px;
+    color: #ffd700;
+    text-shadow: 2px 2px #000;
+    z-index: 2;
+}
+
+.foto-kapitan {
+    position: absolute;
+    top: 220px;
+    left: 510px;
+    width: 140px;
+    border: 8px solid #ef8206;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.foto-czaszka {
+    position: absolute;
+    top: 340px;
+    left: 680px;
+    width: 150px;  height: 200px;
+    border: 8px solid #ef8206;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.foto-zaloga {
+    position: absolute;
+    top: 360px;
+    right: 70px;
+    width: 130px;
+    border: 8px solid #ef8206;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.foto-statek {
+    position: absolute;
+    bottom: 120px;
+    right: 150px;
+    width: 180px; height: 200px;
+    border: 8px solid #ef8206;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.przycisk-cyrograf {
+    position: absolute;
+    bottom: 100px;
+    left: 450px;
+    display: inline-block;
+    padding: 12px 35px;
+    background-color: #543614;
+    color: #ffd700;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 5px solid #ffd700;   /*  Było 3px solid #ffd700;  */
+    border-radius: 30px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    transition: transform 0.2s;
+    z-index: 3; /* Przycisk najwyżej, aby dało się go łatwo kliknąć */
+}
+.przycisk-cyrograf:hover {
+   color: #ef8206;            
+    border-color: #ef8206;   
+    background-color: #fbff00;
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   1. RESET I BAZA KONTEKSTOWA (KOTWICA SKALOWANIA)
+   ========================================================================== 
+* {    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definiujemy zmienną bazową dla całej makiety 
+:root {
+    --skala-mapy: 1;
+}
+
+/* ==========================================================================
+   1. KONTENER RODZIC (Centrowanie i ochrona przed reklamami)
+   ========================================================================== 
+html, body, .glowny-kontener-strony { /*  background-image: url("Tworzenieszachownicy25x25.png");  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Centrowanie w poziomie
+    align-items: center;     /* Centrowanie w pionie 
+    background-color: #f7be16;    /*  Żółte jednolite pole podkładowe w tle, bo nie ma właściwości: background-image: url("Tworzenieszachownicy25x25.png");   
+    overflow-x: hidden;      /* Likwiduje poziomy pasek przewijania 
+}   */
+
+/*  Zmiana 13.08.2026 r.   html, body  { 
+    width: 100%;
+    height: 100%;
+    background-image: url("Tworzenieszachownicy25x25.png");
+    background-repeat: repeat;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center; /* Centruje mapę w poziomie 
+    align-items: center;     /* Centruje mapę w pionie 
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Pozwoli na przewijanie przy ogromnym zoomie 200%  
+	
+    margin: 0;
+    padding: 0;    
+    min-height: 100vh;       /* Dba o wysokość całego ekranu 
+}   */
+
+/* Dynamiczne sterowanie skalą w zależności od wielkości okna 
+@media (max-width: 1240px) or (max-height: 840px) {
+    :root { --skala-mapy: 0.85; } /* Skala dla mniejszych ekranów np. 1024 
+}
+@media (max-width: 1000px) or (max-height: 700px) {
+    :root { --skala-mapy: 0.7; }
+}
+
+/* ==========================================================================
+   2. GŁÓWNA KOTWICA (Pancerna Rama z zachowaniem proporcji 3:2)
+   ========================================================================== 
+.pancerna-rama-mapy {  
+    --baza-szerokosc: 1200px;
+    --baza-wysokosc: 800px;
+
+    /* Wykorzystujemy proporcję 1200x800, czyli stosunek 3:2 
+    aspect-ratio: 3 / 2; 
+    
+    /* Elastyczne skalowanie: mapa dopasuje się do ekranu, zachowując proporcje 
+    width: calc(var(--baza-szerokosc) * var(--skala-mapy));   
+    max-width: 90vw; 
+    max-height: 90vh;
+    
+    /* Automatyczna wysokość pilnuje proporcji z aspect-ratio 
+    height: auto; 
+
+    border-color: #4a3c31; 
+    border-style: solid; 
+    border-width: calc(30px * var(--skala-mapy)); 
+    border-radius: calc(50px * var(--skala-mapy)); /* Zaokrąglenie też się skaluje
+    position: relative;
+    
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    flex-shrink: 0; /* Blokujemy kurczenie przez reklamy */
+}
+
+
+
+
+/* Zmieniono 13.08.2026 r. ==========================================================================
+   2. GŁÓWNA KOTWICA (SZTYWNA PROPORCJA)
+   ========================================================================== 
+  .pancerna-rama-mapy {  
+    border-color: #4a3c31; 
+    border-style: solid; 
+    border-width: calc(30px * var(--skala-mapy)); 
+    border-radius: 50px;
+    position: relative;
+    
+    /* Wymiary ramy bazowej 
+    width: calc(1200px * var(--skala-mapy));   
+    height: calc(800px * var(--skala-mapy));  
+    
+    /* Zmiana 1: Maksymalne wymiary bezpieczeństwa, aby mapa nie wystawała za ekran 
+    max-width: 95vw; 
+    max-height: 95vh;
+    
+    margin: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    
+    /* Zmiana 2: Usuwamy całkowicie flex-shrink: 0; i pozwalamy na inteligentne skalowanie 
+    flex-shrink: 1; 
+}  */
+
+
+   
+/* .pancerna-rama-mapy {  
+    border-color: #4a3c31; 
+    border-style: solid; 
+    border-width: calc(30px * var(--skala-mapy)); 
+    border-radius: 50px;
+    position: relative;
+    
+     Wymiary ramy są teraz ściśle powiązane ze skalą projektu 
+    width: calc(1200px * var(--skala-mapy));   
+    height: calc(800px * var(--skala-mapy));  
+    margin: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    flex-shrink: 0; /* Blokuje kurczenie się kontenera w elastycznym body 
+}  */
+
+/* ==========================================================================
+   3. WARSTWY I PORTRETY PIRATÓW (ZAKOTWICZONE PROCENTOWO DO RAMY)
+   ==========================================================================
+#mapa {  
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+/* Grubość ramek obrazków skaluje się razem z projektem 
+.pirat-lewy, .pirat-srodek, .pirat-prawy, .okret {
+    border: calc(10px * var(--skala-mapy)) solid #ef8206;
+    border-radius: 25px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+    position: absolute;
+    z-index: 2;
+}
+
+.pirat-lewy {
+    left: 43.3%;      
+    top: 8.7%;
+    width: 12.5%; 
+    height: auto; 
+}
+
+.pirat-srodek {
+    left: 59.5%;
+    top: 22.5%;      
+    width: 12.1%;       
+    height: auto;
+}
+
+.pirat-prawy {
+    left: 80.4%;   
+    top: 28.7%;   
+    width: 11.2%;    
+    height: auto;
+}
+	
+.okret { 
+    top: 63.7%;
+    left: 70.8%;
+    width: 16.6%;
+    height: auto; 
+}
+
+/* ==========================================================================
+   4. NAPISY Z TRÓJWYMIAROWYM WYGIĘCIEM (ZABLOKOWANE SKALOWANIE CZCIONKI)
+   ========================================================================== 
+.napis-explorer {
+    position: absolute;
+    z-index: 3;
+    left: 58.3%;
+    top: 8.1%;     
+    font-family: "Palatino Linotype", serif;
+    font-weight: bold;
+    /* Czcionka reaguje WYŁĄCZNIE na naszą skalę mapy, ignorując systemowy zoom tekstu 
+    font-size: calc(46px * var(--skala-mapy)); 
+    color: #fbff00;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+    transform: perspective(250px) rotateX(-25deg) rotate(-10deg);      
+    letter-spacing: 2px; 
+    white-space: nowrap;
+}
+
+.napis-rejs {
+    position: absolute;
+    z-index: 3;
+    left: 43.3%;    
+    top: 50%;    
+    font-family: "Segoe Print", sans-serif;
+    font-weight: bold;
+    font-size: calc(30px * var(--skala-mapy));
+    color: #fbff00;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
+    transform: perspective(250px) rotateX(20deg) rotate(10deg);    
+    letter-spacing: 2px; 
+    white-space: nowrap;
+}
+
+#plakat {
+    position: absolute;
+    z-index: 2;
+    height: 75%;  
+    width: auto;
+    top: 7.5%;      
+    left: 6.6%;     
+    transform: skew(10deg, 5deg); 
+}
+
+/* ==========================================================================
+   5. INTERFEJS: PRZYCISK CYROGRAF (SPÓJNY ROZMIAR)
+   ==========================================================================
+.btn-box {
+    position: absolute;
+    z-index: 3;
+    bottom: 6.2%;     
+    left: 38.5%; /* Skorygowane wyrównanie do osi przycisku na zrzucie 
+    width: 23%;
+    display: flex;
+    justify-content: center;
+}
+
+.pirate-button { 
+    border: calc(5px * var(--skala-mapy)) solid #fbff00;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Wymiary przycisku rosną proporcjonalnie do reszty komponentów 
+    width: calc(195px * var(--skala-mapy));
+    height: calc(50px * var(--skala-mapy));
+    background-color: #543614;
+    color: yellow;
+    font-size: calc(22px * var(--skala-mapy));
+    font-weight: bold;
+    text-decoration: none; 
+    border-radius: 20px;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+.pirate-button:hover {  
+    color: #ef8206;            
+    border-color: #ef8206;   
+    background-color: #fbff00;   
+}
+
+/* ==========================================================================
+   6. DEKORACJA: PIRACKI GWÓŹDŹ NA PLAKACIE
+   ========================================================================== 
+#gwozdz-plakatu {
+    position: absolute;
+    z-index: 4; /* Musi być wyżej niż plakat (z-index: 2), żeby leżał NA NIM */
+    
+    /* Pozycjonowanie gwoździa w górnej części plakatu 
+    left: 21%;  /* Dopasuj te procenty, aby gwóźdź trafił idealnie w środek góry zwoju, było 17%; 
+    top: 16%;    /*  Było 7%;  
+    
+    /* Rozmiar gwoździa dostosowany do skali projektu 
+    width: calc(30px * var(--skala-mapy));  /*  Było 35px   
+    height: auto;
+    
+    /* Delikatny obrót i cień, aby gwóźdź wyglądał realistycznie i trójwymiarowo 
+    transform: rotate(85deg);
+    filter: drop-shadow(3px 8px 4px rgba(0,0,0,0.6));
+}   */

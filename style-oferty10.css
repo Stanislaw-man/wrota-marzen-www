@@ -1,0 +1,213 @@
+/* ==========================================================================
+   1. GLOBALNE TŁO I BAZA PRZEGLĄDARKI (LIKWIDACJA PRZEŚWITÓW)
+   ========================================================================== */
+
+.img {
+    background-color: #5c3a21;         /* Głęboki, piracki brąz zaleje boki szerokich monitorów */
+    background-image: none;            /* BLOKADA: Szachownica nie ma prawa uciekać na boki poza główną ramę strony */
+    width: 100%;                       /* Wymusza pełną szerokość warstwy tła dla stabilności układu */
+    position: relative;                /* Tworzy stabilny punkt odniesienia dla reszty elementów */
+    margin: 0;                         /* Zeruje domyślne marginesy przeglądarki */
+    padding: 0;                        /* Zeruje domyślne marginesy wewnętrzne */
+}
+
+/* ==========================================================================
+   2. PANCERNA RAMA GŁÓWNA STRONY (CENTROWANIE I GEOMETRIA)
+   ========================================================================== */
+
+.kontener-strony2 {
+    width: 1200px;                     /* Sztywna, rzemieślnicza szerokość, identyczna jak na Stronie Głównej */
+    margin: 0 auto;                    /* KOTWICA SYMETRII: Automatycznie i idealnie centruje całą ramę na ekranie */
+    position: relative;                
+    background-image: url("Tworzenieszachownicy25x25.png"); /* Szachownica żyje i wyświetla się wyłącznie wewnątrz tej ramy */
+    box-shadow: none;                  /* LIKWIDACJA CIENIA: Usuwamy szary, brudzący marginesy cień strony */
+    min-height: 100vh;                 /* Sprawia, że rama zawsze ciągnie się do samego dołu widocznego ekranu */
+    display: flex;                     /* Aktywuje elastyczny układ Flexbox dla całej ramy strony */
+    flex-direction: column;            /* Wymusza pionowy porządek: Nagłówek na górze, Galeria w środku, Stopka na dole */
+}
+
+/* ==========================================================================
+   3. GÓRNY BANER (NAGŁÓWEK) I LOGO
+   ========================================================================== */
+
+.prostokąt2 { 
+    width: 1200px;                     /* Idealne spasowanie szerokości z ramą główną */
+    position: relative;                /* Kotwica dla elementów pozycjonowanych absolutnie wewnątrz (logo, telefon, menu) */      
+    height: 290px;                     /* Sprawdzona, tradycyjna wysokość górnego brązowego baneru */           
+    background-color: #452603;         /* Ciemny, głęboki brąz tworzący podkład nagłówka */
+    box-shadow: 0px 10px 15px #000000; /* Estetyczny cień rzucany W DÓŁ, który pięknie odcina baner od szachownicy */ 
+    margin: 0;                         
+    display: block;             
+}
+
+/* LOGO - LOGOOKO 4 */
+.logooko4 { 
+    border-radius: 60px;       /* Właściwość powoduje zaokrąglenie rogów  */
+    position: absolute;                /* Pikselowe, niezależne przypięcie logo wewnątrz brązowego paska */
+    top: 20px;                        /* Sprytne przesunięcie w górę zapewniające idealną symetrię pionową */
+    left: 35px;                        /* Elegancki, delikatny odstęp od lewego brzegu ramy */
+    height: 250px;                     /* Okazała wysokość Twojego nowego, pięknego logo */           
+    width: auto;                       /* Szerokość dobiera się sama, dbając o idealne proporcje obrazu */
+}
+
+/* TEKST POWITALNY (WOLNA STREFA NAGŁÓWKA) */
+.textpozycjonowanie {  
+    font-size: 44px;                  /*  Wielkość czcionki, było 40px;   */
+    font-style: italic;
+    position: absolute;                /* Niezależne pozycjonowanie napisu wewnątrz baneru */
+    left: 300px;                       /* Tekst startuje bezpiecznie po prawej stronie dużego logo, było 280px;  */      
+    right: 500px;                      /* Pas bezpieczeństwa z prawej strony – tekst nie wjedzie na grafikę telefonu, było 460px;   */      
+    top: 25px;                         /* Estetyczna odległość napisu od sufitu strony, było 30px;  */         
+    margin: 0;                         
+    text-align: center;                /* Idealnie centruje dwulinijkowe powitanie w jego własnym korytarzu */
+    line-height: 1.2;          /* Odpowiednia interlinia dbająca o estetyczny rozkład tekstu w linijkach , było 1.5;   */
+}
+
+/* ==========================================================================
+   4. KONTENER PRAWEJ STRONY (TELEFON I LISTWA NAWIGACJI)
+   ========================================================================== */
+
+.prawa-sekcja-kontener1 { 
+    position: absolute;                
+    top: 20px;                         /* Odsuwa cały prawy blok o 20 pikseli od górnej krawędzi */
+    right: 30px;                       /* Elegancki odstęp 30 pikseli od prawej krawędzi okna */
+    height: 250px;                     
+    width: 830px;                      /* Rzemieślnicza szerokość zsynchronizowana idealnie z żółtą taśmą */
+    display: flex;                     
+    flex-direction: column;            /* Układa elementy pionowo: Telefon na górze, menu dokładnie pod nim */
+    align-items: flex-end;             /* Licuje (wyrównuje) telefon i menu równiutko do prawej krawędzi */
+    justify-content: flex-start;       
+    z-index: 106;                      /* Gwarantuje, że sekcja będzie leżeć na wierzchu brązowego paska */
+}
+
+/* BLOK TELEFONICZNY */
+.kontakt-prawo1 {         
+    display: flex;                     /* Układa słuchawkę i numer telefonu obok siebie w poziomie */
+    align-items: center;               /* Centruje w pionie obie grafiki względem siebie */
+    gap: 10px;                         /* Nowoczesny, czysty odstęp 10 pikseli między obrazkami */   
+    margin-top: 10px;                  
+    margin-bottom: 25px;               /* Tworzy bezpieczną przestrzeń brązowego tła nad żółtą listwą menu */
+}
+
+.sluchawka, .n-rtelefonu { 
+    border-radius: 20px;               /* Nadaje delikatne, zaokrąglone rogi grafikom telefonicznym */
+    height: 95px;                      /* Skorygowana wysokość nadająca lekki i elegancki wygląd */            
+    width: auto;                       
+    float: none;                       /* CZYSZCZENIE: Bezwzględnie kasujemy stary, przestarzały float */
+    margin: 0;                         
+}
+
+/* ==========================================================================
+   5. ŻÓŁTE MENU STANISŁAWA (TAŚMA BAŚNIOWA Z INTERAKCJĄ HOVER)
+   ========================================================================== */
+
+.navi { 
+    margin-left: 340px;     /*  Pozycjonuje w poziomie listwę przycisków    */
+    margin-top: 65px;         /* Pozycjonuje w pionie, odległość listwy z przyciskami, od górnej krawędzi paska podstrony  */
+    background: #fbff00;               /* Czyste, jaskrawe, legendarne żółte tło paska */   
+    height: 50px;                      /* Stała, zgrabna wysokość paska menu */
+    width: 830px;                      /* Szerokość paska dopasowana idealnie do prawej sekcji */
+    border-radius: 30px;               /* Pancerne, owalne zaokrąglenie brzegów całej żółtej taśmy */
+    display: flex;                     
+    align-items: center;               /* Centruje napisy idealnie w osi pionowej żółtej taśmy */
+    box-sizing: border-box;            /* Zabezpiecza pasek przed rozepchaniem przez paddingi wewnętrzne */
+}
+
+.navi ul {
+    list-style-type: none;             /* Przepis Stanisława na brak brzydkich kropek od listy */
+    margin: 0;
+    padding: 0 10px;                   /* Wewnętrzny oddech boczny chroniący skrajne przyciski przed dotykaniem brzegów */
+    width: 100%; 
+    display: flex;                     /* Układa przyciski obok siebie w poziomie */         
+    justify-content: space-between;    /* Rozsuwa przyciski równomiernie na całej długości paska bez dziur */
+    align-items: center;
+}
+
+.navi ul li {
+    display: inline;                   
+    flex: 1;                           /* Każdy element otrzymuje identyczną przestrzeń w podziale paska */
+    text-align: center;                /* Centruje napis w wyznaczonym dla niego korytarzu */
+} 
+
+.navi ul li a {
+    display: inline-block;             /* Pozwala na bezpieczne i stabilne stosowanie paddingów wokół napisu */
+    color: #543614;                    /* Pański piękny, rzemieślniczy brązowy kolor liter */        
+    text-decoration: none;             /* Całkowite usunięcie domyślnego, brzydkiego podkreślenia linku */
+    font-family: sans-serif;           
+    font-size: 19px;                   /* Optymalny rozmiar pisma, by zmieścić 8 przycisków w jednym rzędzie */       
+    font-weight: bold;                 /* Pogrubienie napisów dla świetnej czytelności */
+    padding: 7px 8px;                  /* Odpowiednie uszczuplenie przycisków, by menu oddychało */
+    background: transparent;           /* KLUCZ: Na starcie tło linku jest przezroczyste – widać czystą żółtą taśmę */
+    border-radius: 20px;               /* Przygotowane, mocne zaokrąglenie pod przyszły owal pomarańczowy */    
+    white-space: nowrap;               /* Absolutny zakaz łamania słów w nazwach przycisków */   
+    transition: all 0.2s ease;         /* Płynne, eleganckie pojawianie się owalu po najechaniu myszką */
+}
+
+/* INTERAKCJA MYSZKI (HOVER) */
+.navi ul li a:hover { 
+    background: #ef8206;               /* Po najechaniu myszką wokół napisu pojawia się mniejszy pomarańczowy owal */     
+    color: #543614;                    /* Kolor liter pozostaje brązowy, gwarantując wzorowy kontrast */
+}
+
+	
+/* ==========================================================================
+	6. NOWOCZESNA STOPKA STRONY (FLEXBOX NA SAMYM DOLE)
+     ========================================================================== */
+	footer {
+		margin-top: auto;                  /* POTĘŻNY BEZPIECZNIK: Automatycznie dopycha całą stopkę na sam dół brązowej ramy */
+		}
+		.prostokat2 {
+			width: 1200px;                     /* Idealne, równe spasowanie z szerokością nagłówka i środka */
+			background-color: #452603;         /* Tradycyjny ciemny, głęboki brąz (identyczny jak w nagłówku) */
+			margin: 0;padding: 40px 80px;                /* Bardzo elegancki oddech: 40px wolnego tła góra / dół oraz 80px luzu od boków */
+                       box-shadow: 0px -10px 15px #000000; /* Zastosowanie minusa sprawia, że głęboki cień rzucany jest W GÓRĘ, odcinając stopkę */
+			box-sizing: border-box;
+			display: flex;                     /* Aktywuje system Flexbox dla sprawnego zarządzania tekstami */
+			justify-content: space-between;    /* Maksymalnie rozsuwa tekst lewy (biuro) i prawy (godziny) do skrajnych krawędzi stopki */
+			align-items: center;               /* Wyrównuje oba bloki tekstowe idealnie w poziomie (centrowanie w pionie stopki) */
+			position: relative;	
+			}
+			
+			/* NAPISY W STOPCE */
+			.text4, .text5 {
+				color: #fbff00;                    /* Jaskrawożółty, piracki odcień liter w stopce witryny */
+				font-family: Arial, sans-serif;    /* Bardzo czytelny krój pisma */
+				font-size: 24px;                   /* Skorygowana wielkość czcionki dla idealnej harmonii wizualnej */
+				line-height: 1.5;                  /* Przyjemna interlinia dająca tekstowi oddech przy zawijaniu wiersza */
+				margin: 0;
+				}
+			.text4 {
+				text-align: left;                  /* Wyrównuje blok siedziby biura do lewej strony */
+				}
+			.text5 {
+				text-align: right;                 /* Wyrównuje blok godzin otwarcia i przesłania do prawej strony */
+				}
+				
+				/* Wyczyszczenie fabrycznych marginesów akapitów HTML w stopce */
+				.text4 p, .text5 p {
+					margin: 0;                         /* Usuwa fabryczne luzy przeglądarki, gwarantując szczelność i zwartość stopki */
+					}
+					
+					
+					
+					
+     /* ===================================================  
+	    7. Stylizacja napisu w partii środkowej podstrony "Oferty" 
+          =================================================== */
+	.tekst {  
+	        text-align: justify;       /* Wyrównuje tekst jednocześnie do lewej i prawej krawędzi (jak w książce lub gazecie) */
+                text-justify: inter-character; /* Rozkłada dodatkowe odstępy między poszczególne znaki, a nie tylko między słowa (brak wielkich dziur) */
+                hyphens: auto;             /* Włącza automatyczne, inteligentne dzielenie i przenoszenie słów na końcu linii */
+	        font-family: Arial; 
+	        font-size: 34px;
+                font-style: italic;			
+		 color: #452603; 
+		 text-align: justify; 
+		 text-indent: 2cm; 
+		 margin-left: 100px; 
+		 margin-right: 100px; 
+		 margin-top: 40px;     /* Odsuwa tekst w pionie od dolnej krawędzi górnego paska, było 0px;   */
+		 line-height: 1.1;                  /* Przyjemna interlinia dająca tekstowi oddech przy zawijaniu wiersza */		 
+		 }
+	 
+						

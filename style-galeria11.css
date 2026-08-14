@@ -1,0 +1,240 @@
+/* ==========================================================================
+   SEKCJA 1: RAMA GEOMETRII I STRUKTURA GŁÓWNA STRONY
+   ========================================================================== 
+   CEL: Zbudowanie pancernego szkieletu o szerokości 1200px i wycentrowanie go.
+   EDUKACJA: Blokujemy rozchodzenie się elementów na boki, eliminując pasek przewijania.
+   ========================================================================== */
+
+/* Podkład pod całe okno przeglądarki */
+.img {
+    background-color: #5c3a21;  /* Piracki, głęboki brąz zalewający boki ekranu */
+    background-image: none;     /* Blokada starej szachownicy poza główną osią strony */
+    width: 100%;                /* Wymusza pełne 100% szerokości dla warstwy tła */
+    position: relative;         /* Stabilizuje pozycjonowanie bazy strony */
+    margin: 0;                  /* Kasuje domyślne marginesy przeglądarki */
+    padding: 0;                 /* Kasuje wewnętrzne oddechy */
+}
+
+/* Główna rama trzymająca środek galerii */
+.kontener-strony {
+    width: 1200px;              /* Pancerna szerokość zablokowana sztywno na 1200px */
+    margin: 0 auto;             /* KOTWICA SYMETRII: Automatycznie i idealnie centruje ramę na ekranie */
+    position: relative;         /* Tworzy główny układ współrzędnych dla elementów wewnątrz strony */
+    background-image: url("Tworzenieszachownicy25x25.png"); /* Szachownica żyje i wyświetla się tylko wewnątrz tej ramy 1200px */
+    box-shadow: none;           /* LIKWIDACJA CIENIA: Zgodnie z życzeniem Stanisława - brak poświaty na bokach */
+    min-height: 100vh;          /* Sprawia, że rama zawsze ma wysokość równą minimum całemu widocznemu ekranowi */
+    display: flex;              /* Aktywuje nowoczesny układ Flexbox dla całej ramy strony */
+    flex-direction: column;     /* Wymusza pionowy układ: nagłówek na górze, środek w centrum, stopka na dole */
+}
+
+/* ==========================================================================
+   SEKCJA 2: BANER GÓRNY (NAGŁÓWEK) I ELEMENTY LOGO
+   ========================================================================== 
+   CEL: Ustabilizowanie ciemnego paska górnego oraz umieszczenie na nim logo i powitania.
+   ========================================================================== */
+
+.prostokąt { 
+    width: 1200px;              /* Dopasowanie szerokości górnego paska do pancernej ramy 1200px */
+    position: relative;         /* Kotwica absolutna dla logo i tekstów nagłówka */      
+    height: 290px;              /* Sprawdzona, idealna wysokość górnego brązowego baneru */           
+    background-color: #452603;  /* Ciemny rzemieślniczy brąz nagłówka */
+    box-shadow: 0px 10px 15px #000000; /* Ciekawe dopełnienie: ten cień ładnie odcina nagłówek od szachownicy pod spodem */ 
+    margin: 0;                  /* Wyczyszczenie zewnętrznych przesunięć */
+    display: block;             /* Upewnia przeglądarkę, że to stabilny element blokowy */
+}
+
+/* Nowe logo w nagłówku dla podstrony "Galeria 1" */
+.logooko3 { 
+    position: absolute;         /* Precyzyjne, pikselowe przypięcie logo w banerze */
+    top: -10px;                 /* Sprytne przesunięcie w górę, zabezpieczające układ przed rozjechaniem */
+    left: 5px;                  /* Elegancki odstęp od lewej krawędzi ramy */
+    height: 310px;              /* Okazała wysokość Twojego nowego logo */           
+    width: auto;                /* Szerokość dobiera się sama, dbając o idealne proporcje grafiki */
+}
+
+/* Pozycjonowanie tekstu powitalnego */
+.textpozycjonowanie { 
+    position: absolute;         /* Precyzyjne pozycjonowanie w wolnej strefie nagłówka */
+    left: 280px;                /* Tekst startuje bezpiecznie po prawej stronie dużego logo */      
+    right: 490px;               /* Margines bezpieczeństwa z prawej strony – tekst nie najeżdża na telefon */      
+    top: 25px;                  /* Stała, estetyczna odległość napisu od górnego brzegu paska */         
+    margin: 0;                  /* Reset domyślnych marginesów tekstu */
+    text-align: center;         /* Idealne centrowanie powitania w jego własnym korytarzu */
+}
+
+/* ==========================================================================
+   SEKCJA 3: NOWOCZESNY KONTENER PRAWEJ STRONY DLA TELEFONU I MENU
+   ========================================================================== 
+   CEL: Zarządzanie prawym sektorem baneru. Łączy telefon i żółtą taśmę.
+   EDUKACJA: Użycie margin-top: 65px w klasie .navi idealnie pozycjonuje listwę w pionie.
+   ========================================================================== */
+
+.prawa-sekcja-kontener {
+    position: absolute;         /* Sztywne i precyzyjne zakotwiczenie całego prawego bloku */
+    top: 20px;                  /* Odsuwa cały blok o 20 pikseli od sufitu paska nagłówka */
+    right: 30px;                /* Elegancki odstęp 30 pikseli od prawej krawędzi okna głównego */
+    height: 250px;              /* Wysokość dająca pełną swobodę dla telefonu i żółtego menu pod spodem */
+    width: 830px;               /* Sztywna, rzemieślnicza szerokość zsynchronizowana z żółtą taśmą */
+    display: flex;              /* FLEXBOX: Aktywuje nowoczesne zarządzanie elementami wewnątrz */
+    flex-direction: column;     /* Układa elementy pionowo: telefon na górze, listwa pod spodem */
+    align-items: flex-end;      /* Licuje (wyrównuje) telefon i menu idealnie do prawej krawędzi */
+    justify-content: flex-start;/* Zaczyna układanie od samej góry, pozwalając na naturalne opadanie elementów */
+    z-index: 106;               /* Warstwa nad brązowym paskiem bazowym */
+}
+
+/* Blok telefonu w kontenerze */
+.kontakt-prawo { 
+    display: flex;              /* Układa słuchawkę i numer telefonu obok siebie w poziomie */
+    align-items: center;         /* Centruje w pionie grafikę słuchawki z grafiką numeru */
+    gap: 10px;                  /* Elegancki odstęp 10 pikseli między grafikami */   
+    margin-top: 10px;           /* Pozycja startowa bloku wewnątrz kontenera */
+    margin-bottom: 25px;        /* Tworzy 25 pikseli bezpiecznego oddechu nad żółtą listwą menu */
+}
+
+/* Grafiki telefoniczne */
+.sluchawka, .n-rtelefonu { 
+    border-radius: 20px;         /* Nadaje ładne, zaokrąglone rogi grafikom telefonu */
+    height: 95px;               /* Skorygowana wysokość grafik dająca lżejszy wygląd */            
+    width: auto;                /* Szerokość dostosowuje się automatycznie do naturalnych proporcji */
+}
+
+/* Żółty podkład menu (Stanisławowa Taśma Baśniowa) */
+.navi { 
+    background: #fbff00;        /* Czyste, jaskrawe żółte tło paska */   
+    height: 50px;               /* Stała, zgrabna wysokość paska */
+    width: 830px;               /* Szerokość paska menu dopasowana do prawej sekcji */
+    margin-top: 65px;           /* STANISŁAWOWA DEDYKOWANA POPRAWKA: Pozycjonuje listwę idealnie w pionie pod telefonem */
+    border-radius: 30px;        /* Zaokrąglenie brzegów całej żółtej taśmy */
+    display: flex;
+    align-items: center;       /* Centruje napisy idealnie w pionie żółtej taśmy */
+    box-sizing: border-box;
+}
+
+/* Struktura listy menu */
+.navi ul {
+    list-style-type: none;     /* Przepis Stanisława na brak kropek */
+    margin: 0;
+    padding: 0 10px;            /* Wewnętrzny oddech boczny chroniący skrajne linki */
+    width: 100%; 
+    display: flex;              /* Układa napisy obok siebie w poziomie */         
+    justify-content: space-between; /* Rozsuwa napisy równomiernie na całej długości paska */
+    align-items: center;
+}
+
+.navi ul li {
+    display: inline;           
+    flex: 1;                   /* Każdy element otrzymuje równą przestrzeń w podziale paska */
+    text-align: center;        /* Centruje napis w wyznaczonym dla niego korytarzu */
+} 
+
+/* Wygląd przycisków - stan startowy (Same napisy na żółtej taśmie) */
+.navi ul li a {
+    display: inline-block;     /* Pozwala na bezpieczne stosowanie paddingów wokół napisu */
+    color: #543614;            /* Pański piękny, rzemieślniczy brązowy kolor liter */        
+    text-decoration: none;     /* Usunięcie domyślnego podkreślenia linku */
+    font-family: sans-serif;   /* Prosty, czysty krój pisma bezszeryfowego */
+    font-size: 19px;           /* Optymalny rozmiar, by zmieścić 8 przycisków */       
+    font-weight: bold;         /* Pogrubienie napisów dla świetnej czytelności */
+    padding: 7px 8px;          /* Przyciski stają się smuklejsze */
+    background: transparent;   /* KLUCZ: Startowo tło przycisku jest przezroczyste */
+    border-radius: 20px;       /* Przygotowane, mocne zaokrąglenie pod przyszły owal */    
+    white-space: nowrap;       /* Absolutny zakaz łamania słów w nazwach przycisków */   
+    transition: all 0.2s ease; /* Płynne, eleganckie pojawianie się owalu po najechaniu myszką */
+}
+
+/* Interakcja (Hover) - po najechaniu myszką na napis menu */
+.navi ul li a:hover { 
+    background: #ef8206;       /* Po najechaniu myszką, wokół napisu pojawia się mniejszy owal w kolorze jasnego pomarańczu */     
+    color: #543614;            /* Kolor liter pozostaje brązowy, gwarantując idealny kontrast */
+}	
+
+
+
+
+/* ==========================================================================
+   SEKCJA 4: NOWOCZESNA SIATKA ZDJĘĆ GALERII 1 (FLEXBOX MECHANIZM OBRONNY)
+   ========================================================================== 
+   CEL: Ułożenie 4 zdjęć w rzędzie, a opisu po ich lewej stronie.
+   EDUKACJA: Wykorzystujemy row-reverse. Tekst w HTML jest na końcu rzędu, ale dzięki 
+   tej regule przeglądarka renderuje go jako pierwszy z lewej! To całkowicie likwiduje 
+   potrzebę ujemnych marginesów -1400px, które powodowały błędy.
+   ========================================================================== */
+
+/* Główny rząd trzymający zdjęcia i opis miejsca */
+.container1 {
+    width: 1140px;              /* Szerokość rzędu idealnie wpasowana w ramę 1200px (zostaje po 30px luzu na boki) */
+    margin: 40px auto 0 auto;   /* Centruje rząd na osi szachownicy i daje 40px oddechu od rzędu powyżej */
+    display: flex;              /* FLEXBOX: Nowoczesne zarządzanie rzędami galerii */
+    flex-direction: row-reverse; /* MAGICZNA SZTUCZKA: Odwracamy wyświetlanie! Tekst z końca kodu ląduje z lewej strony! */
+    justify-content: flex-end;  /* Spina i dociąga wszystkie elementy równo do lewej krawędzi strony */
+    align-items: center;        /* Centruje napisy miejsc idealnie w pionie względem wysokości zdjęć */
+        }
+
+
+
+/* Pojedyncze zdjęcie w galerii */
+.image1 {
+	border-radius: 15px;        /*Nadaje ładne, rzemieślnicze zaokrąglenie krawędzi obrazków */
+	margin: 0 0 0 22px;         /* Stałe, równe odstępy (22px) odsuwające zdjęcia od siebie i od tekstu */
+	border: 2px solid #452603;     /* Tradycyjna brązowa ramka wokół każdego zdjęcia */
+	}
+	
+	/* Bezpiecznik korygujący dla pierwszego zdjęcia po tekście */
+	.container1 img:first-of-type {margin-left: 10px;          /* Daje precyzyjny, 10-pikselowy oddech między napisem miejsca a pierwszym obrazkiem */
+	}
+	/* Wspólny, bezpieczny fundament dla napisów opisujących miejsca (PIONOWA KOLUMNA) */
+	.text6, .text7, .text8, .text9, .text10 {font-family: "Comic Sans MS", cursive, sans-serif; /* Pański ulubiony, przyjazny i swobodny krój pisma */font-size: 26px;            /* Duża, bardzo dobrze widoczna czcionka dla opisu grafiki */
+	color: #452603;             /* Tradycyjny ciemny brąz Stanisława */
+	margin: 0;                  /* ABSOLUTNE ZERO niszczycielskich ujemnych marginesów */
+	width: 220px;               /* SZTYWNA PRZESTRZEŃ: Każdy napis dostaje równe 220px szerokości, tworząc idealną pionową linię! */
+	text-align: left;           /* Wyrównanie tekstu do lewej krawędzi jego kolumny */
+	font-weight: bold;          /* Pogrubienie dla estetyki (zastępuje wykasowane tagi ) */
+	font-style: italic;         /* Kursywa dla estetyki (zastępuje wykasowane tagi ) */
+	}
+	
+	/* ==========================================================================
+	SEKCJA 5: DEKORACJE ŚRODKOWE I STOPKA (FOOTER)CEL: Bezpieczne, szczelne i eleganckie zamknięcie witryny na samym dole.========================================================================== */
+	/* Pasek szachownicy rozdzielający dół strony */
+	.szachownica {
+		height: 40px;               /* Wysokość paska szachownicy między grafiką a dolną krawędzią strony */
+	        background-image: url("Tworzenieszachownicy25x25.png");
+		background-repeat: repeat-x; /* Powtarzanie grafiki szachownicy tylko w poziomie */
+		clear: both;                /* Zapobiega nakładaniu się na elementy pływające */
+		}
+		
+		/* Dolny, brązowy pasek informacyjny (Stopka) */
+		.prostokat2 {
+			width: 1200px;              /* Rozszerzenie dolnego paska do nowej szerokości ramy strony (idealne spasowanie) */
+			background-color: #452603;  /* Tradycyjny ciemny, głęboki brąz (identyczny jak w nagłówku strony) */
+			margin: 0;                  /* Likwiduje białą szparę pod tekstem historycznym, idealnie łącząc stopkę*/
+			padding: 40px 80px;         /* Bardzo elegancki oddech: 40px wolnego tła od góry/dołu oraz 80px luzu od boków */
+			box-shadow: 0px -10px 15px #000000; /* Zastosowanie MINUSA sprawia, że głęboki cień rzucany jest W GÓRĘ, na szachownicę */
+			box-sizing: border-box;     /* Gwarantuje, że paddingi nie rozepchną stopki powyżej ustalonych 1200px */
+			display: flex;              /* FLEXBOX: Aktywuje nowoczesne, elastyczne zarządzanie elementami tekstowymi */
+			justify-content: space-between; /* Automatycznie i maksymalnie rozsuwa tekst lewy i prawy do skrajnych krawędzi */
+			align-items: center;        /* Wyrównuje oba bloki tekstowe idealnie w osi poziomej (centrowanie w pionie) */
+			position: relative;	
+		}
+	
+	/* Napisy w stopce */
+	.text4, .text5 {
+		color: #fbff00;              /* Jaskrawy, tradycyjny żółty kolor pisma */
+		font-family: Arial, sans-serif;         /* Czytelny krój czcionki bezszeryfowej dopasowany do stopek */
+		font-size: 24px;            /* Skorygowana wielkość czcionki dla idealnej harmonii i czytelności */
+		line-height: 1.5;           /* Przyjemna dla oka interlinia zapewniająca oddech tekstowy */
+		}
+	.text4 { text-align: left; }    /* Wymusza sztywne wyrównanie lewego bloku tekstu (Siedziba) do lewej krawędzi */
+	.text5 { text-align: right; }   /* Wymusza równe wyrównanie prawego bloku (Godziny) do prawej krawędzi */
+	
+	/* Reset starych marginesów wewnątrz akapitów HTML w stopce */
+	.text4 p, .text5 p {
+		margin: 0;                  /* Kasuje fabryczne marginesy akapitów, trzymając szczelność stopki */
+		}
+		
+	/* Bezpiecznik ostateczny dla stopki - pilnuje, aby zawsze lądowała pod zdjęciami */
+	footer {
+		clear: both;
+		display: block;
+		position: relative;
+		}
+		
