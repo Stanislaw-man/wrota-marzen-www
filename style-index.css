@@ -1,8 +1,7 @@
 html, body { background-image: url("Tworzenieszachownicy25x25.png"); } 
 
-
 /* GŁÓWNA SCENA - Teraz idealnie przygotowana pod mapę i szachownicę */
-.scena-piracka {
+.scena-piracka {  
     position: relative;
     width: 1200px;
     height: 950px;
@@ -65,7 +64,7 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
     position: absolute;
     top: 220px;
     left: 510px;
-    width: 140px;
+    width: 240px;
     border: 8px solid #ef8206;
     border-radius: 20px;
     z-index: 2;
@@ -124,6 +123,8 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
     background-color: #fbff00;
     transform: scale(1.1);
 }
+
+
 
 
 
