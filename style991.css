@@ -156,7 +156,7 @@ html, body {           background-image: url("MapaPiracka3.jpg"); /* Ścieżka d
     font-style: italic !important;   /* REZYGNACJA Z KURSYWY: Zmień na 'normal' lub zostaw 'italic' */
     font-weight: bold !important;     /* GRUBOŚĆ CZCIONKI: Wartości od 100 do 900 lub słownie 'bold' */
     letter-spacing: 1px;             /* ODSTĘPY MIĘDZY LITERAMI: Dodatkowa opcja rozstrzelenia tekstu */
-    margin: 0;                 /* Kasuje ukryte, domyślne marginesy tekstu wstrzykiwane przez przeglądarki */
+     margin: 0;                 /* Kasuje ukryte, domyślne marginesy tekstu wstrzykiwane przez przeglądarki */
     padding: 0;                /* Kasuje wszelkie wewnętrzne przesunięcia tekstu */
     text-align: center;        /* Centruje tekst w poziomie, gdy jest rozbity na dwa wiersze */
     line-height: 1.1;          /* Zwarta, rzemieślnicza interlinia chroniąca przed rozjechaniem dwóch linijek */	
