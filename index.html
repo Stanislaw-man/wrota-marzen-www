@@ -1,42 +1,56 @@
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styl-index.css"> 
-    <title>Eksplorer</title>
-    
-       
+    <title>Explorer</title>
+    <link rel="stylesheet" href="style-index.css">
 </head>
 <body>
 
-    <div class="pancerna-rama-mapy">
+    <!-- Główny bezpieczny kontener odporny na reklamy hostingu -->
+    <div class="scena-piracka">
         
-        <!-- Podłoga (Najniższa warstwa) -->
+        <!-- TWOJA MAPA jako główne tło całej sceny -->
         <img src="MapaPiracka3.jpg" id="mapa" alt="Mapa">
-        
+
         <!-- Ogłoszenie (Środkowa warstwa) -->
         <img src="Papier61.png" id="plakat" alt="Ogłoszenie">
 		<!-- NOWOŚĆ: Piracki gwóźdź, który przybije plakat do mapy -->
                <img src="gwozdzik.png" id="gwozdz-plakatu" alt="Gwóźdź">
-        
-        <!-- Elementy Załogi i Napisów (Środkowa warstwa) -->
-        <img src="Pirat2.jpg" class="pirat-lewy" alt="Kapitan">
-        <div class="napis-explorer">"E X P L O R E R"</div>
-        
-        <img src="Pirat4.jpg" class="pirat-srodek" alt="Czaszka">
-        
-        <div class="napis-rejs"><b>R e j s&nbsp;&nbsp;  w&nbsp;&nbsp;  N I E Z N A N E ! !</b></div>
-        <img src="Pirat1.jpg" class="pirat-prawy" alt="Pirat">
+    
+
+        <!-- Napisy po prawej stronie  --> 
+      <div class="napis-explorer">
+             <span>"E</span><span>X</span><span>P</span><span>L</span><span>O</span><span>R</span><span>E</span><span>R"</span>
+      </div>
+	  
+        <!-- <h2 class="napis-rejs">Rejs w NIEZNANE!!</h2>  -->
+	<h2 class="napis-rejs">
+               <span>T</span><span>W</span><span>Ó</span><span>J</span>
+   
+               <span>r</span><span>e</span><span>j</span><span>s</span>
+    
+               <span>w</span>
+  
+               <span>N</span><span>I</span><span>E</span><span>Z</span><span>N</span><span>A</span><span>N</span><span>E</span>
+               <span>!</span>	
+        </h2>
 		
-	<img src="okretpiracki1.png" class="okret" alt="fregata">
-        
-        <!-- Przycisk Interaktywny (Najwyższa warstwa na samym wierzchu) -->
-        <div class="btn-box">
-            <a href="WrotaMarzen.html" class="pirate-button">CYROGRAF</a>
-        </div>
+
+        <!-- Cztery małe obrazki na mapie -->
+        <img src="Pirat2.jpg" alt="Pirat kapitan" class="foto-kapitan">
+        <img src="Pirat4.jpg" alt="Czaszka i mapa" class="foto-czaszka">
+        <img src="Pirat1.jpg" alt="Pirat załoga" class="foto-zaloga">
+        <img src="okretpiracki1.png" alt="Fregata" class="foto-statek">
+
+        <!-- Przycisk (Kotwica/Link do drugiej strony) -->
+        <a href="WrotaMarzen.html" class="przycisk-cyrograf">CYROGRAF</a>
 
     </div>
 
 </body>
 </html>
+
+
+

@@ -199,14 +199,15 @@
                 text-justify: inter-character; /* Rozkłada dodatkowe odstępy między poszczególne znaki, a nie tylko między słowa (brak wielkich dziur) */
                 hyphens: auto;             /* Włącza automatyczne, inteligentne dzielenie i przenoszenie słów na końcu linii */
 	        font-family: Arial; 
-	        font-size: 34px;
+	        font-size: 32px;
                 font-style: italic;			
 		 color: #452603; 
 		 text-align: justify; 
 		 text-indent: 2cm; 
 		 margin-left: 100px; 
 		 margin-right: 100px; 
-		 margin-top: 40px;     /* Odsuwa tekst w pionie od dolnej krawędzi górnego paska, było 0px;   */
+		 margin-top: 50px;     /* Odsuwa tekst w pionie od dolnej krawędzi górnego paska, było 0px;   */    
+		 margin-bottom: 50px;   /* Odsuwa tekst w pionie od górnej krawędzi dolnego paska, było 0px;   */ 
 		 line-height: 1.1;                  /* Przyjemna interlinia dająca tekstowi oddech przy zawijaniu wiersza */		 
 		 }
 	 

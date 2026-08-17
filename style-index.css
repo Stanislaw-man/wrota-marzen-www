@@ -1,11 +1,12 @@
 html, body { background-image: url("Tworzenieszachownicy25x25.png"); } 
 
+
 /* GŁÓWNA SCENA - Teraz idealnie przygotowana pod mapę i szachownicę */
-.scena-piracka {  
+.scena-piracka {
     position: relative;
     width: 1200px;
     height: 950px;
-    border: 15px solid #2b1d14; /* Twoja brązowa ramka zewnętrzna */
+    border: 20px solid #2b1d14; /* Twoja brązowa ramka zewnętrzna */
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     margin: 20px auto;
@@ -15,7 +16,7 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 
 /* FORMATOWANIE MAPY TŁA */
 #mapa {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -29,42 +30,88 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 #plakat {
     position: absolute;
     z-index: 2;
-    height: 75%;  
+    height: 55%;    /*  Było 75%  */
     width: auto;
-    top: 7.5%;      
-    left: 6.6%;     
-    transform: skew(10deg, 5deg); 
+    top: 210px;      /*  Było 7,5%  */
+    left: 8.0%;         /*  Było 6.6%  */
+    transform: skew(15deg, 5deg);     /*  Było (10deg, 5deg)  */
 }
 
-
-
-.napis-explorer {
-    position: absolute;
-    top: 150px;
-    right: 150px;
+.napis-explorer span {
+    display: inline-block;
     font-size: 55px;
-    color: #ffd700;
-    text-shadow: 3px 3px #000;
-    letter-spacing: 5px;
-    transform: rotate(5deg);
-    z-index: 2;
+    font-weight: bold;
+    color: #fbff00;
+    text-shadow: 6px 6px 8px #000;
+    letter-spacing: 30px;                           /*   Było 25px;    */
+    transform-origin: center bottom;   /* Dodajemy punkt kotwiczenia w dolnym środku elementu */
 }
+
+/* Każda litera z własnym kątem I przesunięciem w górę */
+.napis-explorer span:nth-child(1) { transform: rotate(-40deg) translateY(-10px) translateX(0px); }    /*  Było   rotate(-20deg) translateY(-15px); translateY tworzy krzywą */
+.napis-explorer span:nth-child(2) { transform: rotate(-26deg) translateY(-65px) translateX(0px); }     /*  Było   rotate(-15deg) translateY(-20px);  */
+.napis-explorer span:nth-child(3) { transform: rotate(-19deg) translateY(-88px) translateX(-7px); }     /*  Było   rotate(-10deg) translateY(-30px);  */
+.napis-explorer span:nth-child(4) { transform: rotate(-8deg) translateY(-95px) translateX(-28px); }        /*  Było   rotate(-5deg) translateY(-32px);  */
+.napis-explorer span:nth-child(5) { transform: rotate(1deg) translateY(-92px) translateX(-50px); }          /*  Było   rotate(0deg) translateY(-30px);  */
+.napis-explorer span:nth-child(6) { transform: rotate(12deg) translateY(-72px) translateX(-67px);   }
+.napis-explorer span:nth-child(7) { transform: rotate(22deg) translateY(-40px) translateX(-78px); }
+.napis-explorer span:nth-child(8) { transform: rotate(30deg) translateY(15px) translateX(-80px); }
+
+
+/* POZYCJONOWANIE KONTENERA EXPLORER */
+.napis-explorer {   
+    position: absolute;
+    top: 300px;   /*  Było 180px;  */
+    right: 10px;    /*   Było 80px;   */
+    z-index: 3;
+}
+
 
 .napis-rejs {
     position: absolute;
-    top: 480px;
-    right: 100px;
-    font-size: 32px;
-    color: #ffd700;
-    text-shadow: 2px 2px #000;
-    z-index: 2;
+    top: 455px;
+  left: 470px;
+    font-size: 32px;   /*   Było 36px;   */
+    font-weight: bold;
+    color: #fbff00;
+    text-shadow: 6px 6px 8px #000;
+    letter-spacing: 18px;
+    z-index: 3;
+   /* transform: perspective(350px) rotateX(10deg) rotate(10deg);    /*  Było perspective(250px) rotateX(15deg) rotate(10deg);   */
 }
 
-.foto-kapitan {
+.napis-rejs span {
+    display: inline-block;
+    transform-origin: center bottom;
+}
+
+/* Kąty dla dolnej krzywej - odwrócone niż górna */
+.napis-rejs span:nth-child(1)  { transform: rotate(55deg) translateY(14px); }    /*  Było transform: rotate(15deg) translateY(15px);   */
+.napis-rejs span:nth-child(2)  { transform: rotate(45deg) translateY(48px) translateX(10px); }
+.napis-rejs span:nth-child(3)  { transform: rotate(35deg) translateY(72px) translateX(10px); }
+.napis-rejs span:nth-child(4)  { transform: rotate(25deg) translateY(91px) translateX(5px); }
+.napis-rejs span:nth-child(5)  { transform: rotate(17deg) translateY(105px) translateX(10px); }
+.napis-rejs span:nth-child(6)  { transform: rotate(20deg) translateY(115px) translateX(14px);}
+.napis-rejs span:nth-child(7)  { transform: rotate(8deg) translateY(121px) translateX(-11px); }
+.napis-rejs span:nth-child(8)  { transform: rotate(5deg) translateY(121px) translateX(-18px); }
+.napis-rejs span:nth-child(9)  { transform: rotate(3deg) translateY(123px) translateX(-16px); }
+.napis-rejs span:nth-child(10) { transform: rotate(0deg) translateY(120px) translateX(-17px); }
+.napis-rejs span:nth-child(11) { transform: rotate(-3deg) translateY(117px) translateX(-22px); }
+.napis-rejs span:nth-child(12) { transform: rotate(-6deg) translateY(112px) translateX(-29px); }
+.napis-rejs span:nth-child(13) { transform: rotate(-9deg) translateY(105px) translateX(-36px); }
+.napis-rejs span:nth-child(14) { transform: rotate(-15deg) translateY(92px) translateX(-44px); }
+.napis-rejs span:nth-child(15) { transform: rotate(-18deg) translateY(77px) translateX(-48px); }
+.napis-rejs span:nth-child(16) { transform: rotate(-25deg) translateY(54px) translateX(-54px); }
+.napis-rejs span:nth-child(17) { transform: rotate(-29deg) translateY(34px) translateX(-54px); }
+.napis-rejs span:nth-child(18) { transform: rotate(-34deg) translateY(381px) translateX(564px); }
+
+
+.foto-kapitan { 
     position: absolute;
-    top: 220px;
-    left: 510px;
-    width: 240px;
+    top: 50px;        /*  Było 220px;  */
+    left: 420px;        /*  Było 510px;  */
+    width: 140px;   /*  Było  140px;   */
+    height: 170px;   /*  Dodano   */
     border: 8px solid #ef8206;
     border-radius: 20px;
     z-index: 2;
@@ -72,8 +119,8 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 
 .foto-czaszka {
     position: absolute;
-    top: 340px;
-    left: 680px;
+    top: 310px;       /*  Było 340px;  */
+    left: 700px;        /*  Było 680px;  */  
     width: 150px;  height: 200px;
     border: 8px solid #ef8206;
     border-radius: 20px;
@@ -92,8 +139,8 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 
 .foto-statek {
     position: absolute;
-    bottom: 120px;
-    right: 150px;
+    bottom: 70px;    /*  Było 120px;  */
+    right: 120px;      /*  Było 150px;  */
     width: 180px; height: 200px;
     border: 8px solid #ef8206;
     border-radius: 20px;
@@ -102,8 +149,8 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 
 .przycisk-cyrograf {
     position: absolute;
-    bottom: 100px;
-    left: 450px;
+    bottom: 150px;            /*  Było 100px;  */
+    left: 500px;                   /*  Było 450px;  */
     display: inline-block;
     padding: 12px 35px;
     background-color: #543614;
@@ -124,292 +171,32 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
     transform: scale(1.1);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-/* ==========================================================================
-   1. RESET I BAZA KONTEKSTOWA (KOTWICA SKALOWANIA)
-   ========================================================================== 
-* {    
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Definiujemy zmienną bazową dla całej makiety 
-:root {
-    --skala-mapy: 1;
-}
-
-/* ==========================================================================
-   1. KONTENER RODZIC (Centrowanie i ochrona przed reklamami)
-   ========================================================================== 
-html, body, .glowny-kontener-strony { /*  background-image: url("Tworzenieszachownicy25x25.png");  
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center; /* Centrowanie w poziomie
-    align-items: center;     /* Centrowanie w pionie 
-    background-color: #f7be16;    /*  Żółte jednolite pole podkładowe w tle, bo nie ma właściwości: background-image: url("Tworzenieszachownicy25x25.png");   
-    overflow-x: hidden;      /* Likwiduje poziomy pasek przewijania 
-}   */
-
-/*  Zmiana 13.08.2026 r.   html, body  { 
-    width: 100%;
-    height: 100%;
-    background-image: url("Tworzenieszachownicy25x25.png");
-    background-repeat: repeat;
-    font-family: sans-serif;
-    display: flex;
-    justify-content: center; /* Centruje mapę w poziomie 
-    align-items: center;     /* Centruje mapę w pionie 
-    justify-content: center;
-    align-items: center;
-    overflow: auto; /* Pozwoli na przewijanie przy ogromnym zoomie 200%  
-	
-    margin: 0;
-    padding: 0;    
-    min-height: 100vh;       /* Dba o wysokość całego ekranu 
-}   */
-
-/* Dynamiczne sterowanie skalą w zależności od wielkości okna 
-@media (max-width: 1240px) or (max-height: 840px) {
-    :root { --skala-mapy: 0.85; } /* Skala dla mniejszych ekranów np. 1024 
-}
-@media (max-width: 1000px) or (max-height: 700px) {
-    :root { --skala-mapy: 0.7; }
-}
-
-/* ==========================================================================
-   2. GŁÓWNA KOTWICA (Pancerna Rama z zachowaniem proporcji 3:2)
-   ========================================================================== 
-.pancerna-rama-mapy {  
-    --baza-szerokosc: 1200px;
-    --baza-wysokosc: 800px;
-
-    /* Wykorzystujemy proporcję 1200x800, czyli stosunek 3:2 
-    aspect-ratio: 3 / 2; 
-    
-    /* Elastyczne skalowanie: mapa dopasuje się do ekranu, zachowując proporcje 
-    width: calc(var(--baza-szerokosc) * var(--skala-mapy));   
-    max-width: 90vw; 
-    max-height: 90vh;
-    
-    /* Automatyczna wysokość pilnuje proporcji z aspect-ratio 
-    height: auto; 
-
-    border-color: #4a3c31; 
-    border-style: solid; 
-    border-width: calc(30px * var(--skala-mapy)); 
-    border-radius: calc(50px * var(--skala-mapy)); /* Zaokrąglenie też się skaluje
-    position: relative;
-    
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    flex-shrink: 0; /* Blokujemy kurczenie przez reklamy */
-}
-
-
-
-
-/* Zmieniono 13.08.2026 r. ==========================================================================
-   2. GŁÓWNA KOTWICA (SZTYWNA PROPORCJA)
-   ========================================================================== 
-  .pancerna-rama-mapy {  
-    border-color: #4a3c31; 
-    border-style: solid; 
-    border-width: calc(30px * var(--skala-mapy)); 
-    border-radius: 50px;
-    position: relative;
-    
-    /* Wymiary ramy bazowej 
-    width: calc(1200px * var(--skala-mapy));   
-    height: calc(800px * var(--skala-mapy));  
-    
-    /* Zmiana 1: Maksymalne wymiary bezpieczeństwa, aby mapa nie wystawała za ekran 
-    max-width: 95vw; 
-    max-height: 95vh;
-    
-    margin: auto;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    
-    /* Zmiana 2: Usuwamy całkowicie flex-shrink: 0; i pozwalamy na inteligentne skalowanie 
-    flex-shrink: 1; 
-}  */
-
-
-   
-/* .pancerna-rama-mapy {  
-    border-color: #4a3c31; 
-    border-style: solid; 
-    border-width: calc(30px * var(--skala-mapy)); 
-    border-radius: 50px;
-    position: relative;
-    
-     Wymiary ramy są teraz ściśle powiązane ze skalą projektu 
-    width: calc(1200px * var(--skala-mapy));   
-    height: calc(800px * var(--skala-mapy));  
-    margin: auto;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    flex-shrink: 0; /* Blokuje kurczenie się kontenera w elastycznym body 
-}  */
-
-/* ==========================================================================
-   3. WARSTWY I PORTRETY PIRATÓW (ZAKOTWICZONE PROCENTOWO DO RAMY)
-   ==========================================================================
-#mapa {  
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    border-radius: 10px;
-}
-
-/* Grubość ramek obrazków skaluje się razem z projektem 
-.pirat-lewy, .pirat-srodek, .pirat-prawy, .okret {
-    border: calc(10px * var(--skala-mapy)) solid #ef8206;
-    border-radius: 25px;
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.5);
-    position: absolute;
-    z-index: 2;
-}
-
-.pirat-lewy {
-    left: 43.3%;      
-    top: 8.7%;
-    width: 12.5%; 
-    height: auto; 
-}
-
-.pirat-srodek {
-    left: 59.5%;
-    top: 22.5%;      
-    width: 12.1%;       
-    height: auto;
-}
-
-.pirat-prawy {
-    left: 80.4%;   
-    top: 28.7%;   
-    width: 11.2%;    
-    height: auto;
-}
-	
-.okret { 
-    top: 63.7%;
-    left: 70.8%;
-    width: 16.6%;
-    height: auto; 
-}
-
-/* ==========================================================================
-   4. NAPISY Z TRÓJWYMIAROWYM WYGIĘCIEM (ZABLOKOWANE SKALOWANIE CZCIONKI)
-   ========================================================================== 
-.napis-explorer {
-    position: absolute;
-    z-index: 3;
-    left: 58.3%;
-    top: 8.1%;     
-    font-family: "Palatino Linotype", serif;
-    font-weight: bold;
-    /* Czcionka reaguje WYŁĄCZNIE na naszą skalę mapy, ignorując systemowy zoom tekstu 
-    font-size: calc(46px * var(--skala-mapy)); 
-    color: #fbff00;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
-    transform: perspective(250px) rotateX(-25deg) rotate(-10deg);      
-    letter-spacing: 2px; 
-    white-space: nowrap;
-}
-
-.napis-rejs {
-    position: absolute;
-    z-index: 3;
-    left: 43.3%;    
-    top: 50%;    
-    font-family: "Segoe Print", sans-serif;
-    font-weight: bold;
-    font-size: calc(30px * var(--skala-mapy));
-    color: #fbff00;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.9);
-    transform: perspective(250px) rotateX(20deg) rotate(10deg);    
-    letter-spacing: 2px; 
-    white-space: nowrap;
-}
-
-#plakat {
-    position: absolute;
-    z-index: 2;
-    height: 75%;  
-    width: auto;
-    top: 7.5%;      
-    left: 6.6%;     
-    transform: skew(10deg, 5deg); 
-}
-
-/* ==========================================================================
-   5. INTERFEJS: PRZYCISK CYROGRAF (SPÓJNY ROZMIAR)
-   ==========================================================================
-.btn-box {
-    position: absolute;
-    z-index: 3;
-    bottom: 6.2%;     
-    left: 38.5%; /* Skorygowane wyrównanie do osi przycisku na zrzucie 
-    width: 23%;
-    display: flex;
-    justify-content: center;
-}
-
-.pirate-button { 
-    border: calc(5px * var(--skala-mapy)) solid #fbff00;   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Wymiary przycisku rosną proporcjonalnie do reszty komponentów 
-    width: calc(195px * var(--skala-mapy));
-    height: calc(50px * var(--skala-mapy));
-    background-color: #543614;
-    color: yellow;
-    font-size: calc(22px * var(--skala-mapy));
-    font-weight: bold;
-    text-decoration: none; 
-    border-radius: 20px;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
-}
-
-.pirate-button:hover {  
-    color: #ef8206;            
-    border-color: #ef8206;   
-    background-color: #fbff00;   
-}
-
-/* ==========================================================================
-   6. DEKORACJA: PIRACKI GWÓŹDŹ NA PLAKACIE
-   ========================================================================== 
+ /* ==========================================================================
+     DEKORACJA: PIRACKI GWÓŹDŹ NA PLAKACIE
+   ========================================================================== */
 #gwozdz-plakatu {
     position: absolute;
-    z-index: 4; /* Musi być wyżej niż plakat (z-index: 2), żeby leżał NA NIM */
+    z-index: 3; /* Musi być wyżej niż plakat (z-index: 2), żeby leżał NA NIM */
     
-    /* Pozycjonowanie gwoździa w górnej części plakatu 
-    left: 21%;  /* Dopasuj te procenty, aby gwóźdź trafił idealnie w środek góry zwoju, było 17%; 
-    top: 16%;    /*  Było 7%;  
+    /* Pozycjonowanie gwoździa w górnej części plakatu */
+    left: 20.5%;  /* Dopasuj te procenty, aby gwóźdź trafił idealnie w środek góry zwoju, było 17%; */
+    top: 28.5%;    /*  Było 7%;  */
     
-    /* Rozmiar gwoździa dostosowany do skali projektu 
-    width: calc(30px * var(--skala-mapy));  /*  Było 35px   
-    height: auto;
+    /* Rozmiar gwoździa dostosowany do skali projektu  */
+    width: auto; /*  Było 35px   */
+    height: 25px;
     
-    /* Delikatny obrót i cień, aby gwóźdź wyglądał realistycznie i trójwymiarowo 
-    transform: rotate(85deg);
-    filter: drop-shadow(3px 8px 4px rgba(0,0,0,0.6));
-}   */
+    /* Delikatny obrót i cień, aby gwóźdź wyglądał realistycznie i trójwymiarowo */
+    transform: rotate(105deg);
+    filter: drop-shadow(3px -5px 4px rgba(0,0,0,0.6));
+}   
+
+
+
+
+
+
+
+
+
+
