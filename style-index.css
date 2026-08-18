@@ -30,10 +30,10 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 #plakat {
     position: absolute;
     z-index: 2;
-    height: 55%;    /*  Było 75%  */
+    height: 60%;    /*  Było 75%  */
     width: auto;
-    top: 210px;      /*  Było 7,5%  */
-    left: 8.0%;         /*  Było 6.6%  */
+    top: 200px;      /*  Było 7,5%  */
+    left: 6.0%;         /*  Było 6.6%  */
     transform: skew(15deg, 5deg);     /*  Było (10deg, 5deg)  */
 }
 
@@ -182,8 +182,8 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
     z-index: 3; /* Musi być wyżej niż plakat (z-index: 2), żeby leżał NA NIM */
     
     /* Pozycjonowanie gwoździa w górnej części plakatu */
-    left: 20.0%; /* Dopasuj te procenty, aby gwóźdź trafił idealnie w środek góry zwoju, było 17%; */
-    top: 29.0%;    /*  Było 7%;  */
+    left: 19%; /* Dopasuj te procenty, aby gwóźdź trafił idealnie w środek góry zwoju, było 17%; */
+    top: 28.9%;    /*  Było 7%;  */
     
     /* Rozmiar gwoździa dostosowany do skali projektu  */
     width: auto; /*  Było 35px   */
