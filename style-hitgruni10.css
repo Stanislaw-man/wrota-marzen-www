@@ -3,27 +3,35 @@
    ========================================================================== */
 
 .img { 
-    background-color:#5c3a21;         /* Głęboki, piracki brąz zaleje boki szerokich monitorów, było  #5c3a21, ale dla lepszej widoczności w trakcie prac stylizujących, dano podkład biały: #ffffff*/
-    background-image: none;            /* BLOKADA: Szachownica nie ma prawa uciekać na boki poza główną ramę strony */
-    width: 100%;                       /* Wymusza pełną szerokość warstwy tła dla stabilności układu */
-    position: relative;                /* Tworzy stabilny punkt odniesienia dla reszty elementów */
-    margin: 0;                         /* Zeruje domyślne marginesy przeglądarki */
-    padding: 0;                        /* Zeruje domyślne marginesy wewnętrzne */
+    background-image: url("MapaPiracka7.jpg");
+    background-color: #5c3a21;         /* Bezpieczny podkład brązu */
+    width: 100%;                       
+    position: relative;                
+    margin: 0;                         
+    padding: 0;                        
 }
 
 /* ==========================================================================
-   2. PANCERNA RAMA GŁÓWNA STRONY (CENTROWANIE I GEOMETRIA)
+   SUPER KONTENER STANISŁAWA - CENTRUJE CAŁĄ STRONĘ I BLOKUJE ROZPAD
+   ========================================================================== */
+.super-kontener-gruni {
+    width: 1200px;                     /* Sztywna, rzemieślnicza szerokość całej makiety */
+    margin: 0 auto;                    /* KOTWICA SYMETRII: Centruje blok na ekranach 1920x1080 i większych */
+    position: relative;
+}
+
+/* ==========================================================================
+   2. PANCERNA RAMA GŁÓWNA STRONY (GEOMETRIA)
    ========================================================================== */
 
 .kontener-strony2 {
-    width: 1200px;                     /* Sztywna, rzemieślnicza szerokość, identyczna jak na Stronie Głównej */
-    margin: 0 auto;                    /* KOTWICA SYMETRII: Automatycznie i idealnie centruje całą ramę na ekranie */
+    width: 1200px;                     
     position: relative;                
-    background-image: url("Tworzenieszachownicy25x25.png"); /* Szachownica żyje i wyświetla się wyłącznie wewnątrz tej ramy */
-    box-shadow: none;                  /* LIKWIDACJA CIENIA: Usuwamy szary, brudzący marginesy cień strony */
-    min-height: 100vh;                 /* Sprawia, że rama zawsze ciągnie się do samego dołu widocznego ekranu */
-    display: flex;                     /* Aktywuje elastyczny układ Flexbox dla całej ramy strony */
-    flex-direction: column;            /* Wymusza pionowy porządek: Nagłówek na górze, Galeria w środku, Stopka na dole */
+    background-image: url("Tworzenieszachownicy25x25.png"); 
+    box-shadow: none;                  
+    min-height: 100vh;                 
+    display: flex;                     
+    flex-direction: column;            
 }
 
 /* ==========================================================================
@@ -31,36 +39,45 @@
    ========================================================================== */
 
 .prostokat2 { 
-    width: 1200px;                     /* Idealne spasowanie szerokości z ramą główną */
-    position: relative;                /* Kotwica dla elementów pozycjonowanych absolutnie wewnątrz (logo, telefon, menu) */      
-    height: 290px;                     /* Sprawdzona, tradycyjna wysokość górnego brązowego baneru */           
-    background-color: #452603;         /* Ciemny, głęboki brąz tworzący podkład nagłówka */
-    box-shadow: 0px 10px 15px #000000; /* Estetyczny cień rzucany W DÓŁ, który pięknie odcina baner od szachownicy */ 
+    width: 1200px;                     
+    position: relative;                
+    height: 290px;                                
+    background-color: #452603;         
+    box-shadow: 0px 10px 15px #000000; 
     margin: 0;                         
     display: block;             
+    box-sizing: border-box;
 }
+
+/* DODATKOWY STYL DLA PRZYCISKU MUZYKI, ŻEBY NIE ZASŁANIAŁ LOGO */
+/*#music-toggle-btn {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    z-index: 200;
+}*/
 
 /* LOGO - LOGOSZACHOWNICA  */
 .logoszachownica { 
-    border-radius: 60px;       /* Właściwość powoduje zaokrąglenie rogów  */
-    position: absolute;                /* Pikselowe, niezależne przypięcie logo wewnątrz brązowego paska */
-    top: 20px;                        /* Sprytne przesunięcie w górę zapewniające idealną symetrię pionową */
-    left: 20px;                        /* Elegancki, delikatny odstęp od lewego brzegu ramy, było 35px;   Takie same efekty, da zastąpienie tej właściwości, właściwością: margin-left: 15px;  */
-    height: 250px;                     /* Okazała wysokość Twojego nowego, pięknego logo */           
-    width: auto;                       /* Szerokość dobiera się sama, dbając o idealne proporcje obrazu */
+    border-radius: 60px;       
+    position: absolute;                
+    top: 35px; /* Obniżone delikatnie, by ustąpić miejsca przyciskowi muzyki */
+    left: 20px;                        
+    height: 240px;                                
+    width: auto;                       
 }
 
 /* TEKST POWITALNY (WOLNA STREFA NAGŁÓWKA) */
 .textpozycjonowanie {  
-    font-size: 48px;                  /*  Wielkość czcionki, było 40px;   */
+    font-size: 48px;                  
     font-style: italic;
-    position: absolute;                /* Niezależne pozycjonowanie napisu wewnątrz baneru */
-    left: 325px;                       /* Tekst startuje bezpiecznie po prawej stronie dużego logo, było 300px;  */      
-    right: 545px;                      /* Pas bezpieczeństwa z prawej strony – tekst nie wjedzie na grafikę telefonu, było 500px;   */      
-    top: 15px;                         /* Estetyczna odległość napisu od sufitu strony, było 25px;  */         
+    position: absolute;                
+    left: 325px;                             
+    right: 545px;                            
+    top: 15px;                                  
     margin: 0;                         
-    text-align: center;                /* Idealnie centruje dwulinijkowe powitanie w jego własnym korytarzu */
-    line-height: 1.2;          /* Odpowiednia interlinia dbająca o estetyczny rozkład tekstu w linijkach , było 1.5;   */
+    text-align: center;                
+    line-height: 1.2;          
 }
 
 /* ==========================================================================
@@ -69,256 +86,234 @@
 
 .prawa-sekcja-kontener1 { 
     position: absolute;                
-    top: 20px;                         /* Odsuwa cały prawy blok o 20 pikseli od górnej krawędzi */
-    right: 80px;                       /* Elegancki odstęp 30 pikseli od prawej krawędzi okna */
+    top: 20px;                         
+    right: 80px;                       
     height: 250px;                     
-    width: 830px;                      /* Rzemieślnicza szerokość zsynchronizowana idealnie z żółtą taśmą */
+    width: 830px;                      
     display: flex;                     
-    flex-direction: column;            /* Układa elementy pionowo: Telefon na górze, menu dokładnie pod nim */
-    align-items: flex-end;             /* Licuje (wyrównuje) telefon i menu równiutko do prawej krawędzi */
+    flex-direction: column;            
+    align-items: flex-end;             
     justify-content: flex-start;       
-    z-index: 106;                      /* Gwarantuje, że sekcja będzie leżeć na wierzchu brązowego paska */
+    z-index: 106;                      
 }
 
 /* BLOK TELEFONICZNY */
 .kontakt-prawo1 {         
-    display: flex;                     /* Układa słuchawkę i numer telefonu obok siebie w poziomie */
-    align-items: center;               /* Centruje w pionie obie grafiki względem siebie */
-    gap: 10px;                         /* Nowoczesny, czysty odstęp 10 pikseli między obrazkami */   
+    display: flex;                     
+    align-items: center;               
+    gap: 10px;                            
     margin-top: 10px;                  
-    margin-bottom: 25px;               /* Tworzy bezpieczną przestrzeń brązowego tła nad żółtą listwą menu */
+    margin-bottom: 25px;               
 }
 
 .sluchawka, .n-rtelefonu { 
-    border-radius: 20px;               /* Nadaje delikatne, zaokrąglone rogi grafikom telefonicznym */
-    height: 95px;                      /* Skorygowana wysokość nadająca lekki i elegancki wygląd */            
+    border-radius: 20px;               
+    height: 95px;                                  
     width: auto;                       
-    float: none;                       /* CZYSZCZENIE: Bezwzględnie kasujemy stary, przestarzały float */
+    float: none;                       
     margin: 0;                         
 }
 
 /* ==========================================================================
-   5. LISTWA MENU (ROZCIĄGNIĘTA W NOWEJ RAMIE 1200px)
-   Żółta taśma z pomarańczowymi przyciskami nawigacyjnymi.
+   5. LISTWA MENU
    ========================================================================== */
 .navi {
-    position: absolute;        /* Przyszpilone sztywno w dolnej strefie brązowego nagłówka */
-    bottom: 5px;              /* Pańska podniesiona wysokość nad dolnym kantem paska, było 35px;   */   
-    left: 65px;               /* Menu zaczyna się równo w pionie pod tekstem powitalnym, tworząc ładną linię, było 285px; i część przycisków, nie mieściła się na listwie  */
-    right: 0px;               /* KOREKTA KOTWICY: Kończy się idealnie równo z prawym brzegiem telefonu na 1200px, było 15px;  */
-    background: #fbff00;       /* Żółta, jaskrawa taśma podkładowa */
-    border-radius: 20px;       /* Silne, estetyczne zaokrąglenie brzegów całej żółtej taśmy */
-    padding: 7px;              /* Margines wewnętrzny chroniący przyciski przed dotykaniem krawędzi taśmy, było 6px;   */        
-    box-sizing: border-box;    /* Gwarantuje, że padding nie rozciągnie paska na boki */
+    position: absolute;        
+    bottom: 5px;                 
+    left: 65px;               
+    right: 0px;               
+    background: #fbff00;       
+    border-radius: 20px;       
+    padding: 7px;                      
+    box-sizing: border-box;    
 }
 
 .navi ul {
-    list-style-type: none;     /* Całkowicie usuwa domyślne czarne kropki z listy punktowanej */
-    margin: 0;                 /* Zeruje fabryczne marginesy listy */
-    padding: 0;                /* Zeruje fabryczne odstępy listy */
-    display: flex;             /* FLEXBOX: Aktywuje nowoczesny układ elastyczny elementów w jednym wierszu */         
-    justify-content: space-between; /* Rozciąga i rozsuwa przyciski tak, aby idealnie wypełniły całą żółtą taśmę bez luk */
-    gap: 6px;                  /* Minimalnie większy oddech (odstęp) między przyciskami w szerszym menu */
+    list-style-type: none;     
+    margin: 0;                 
+    padding: 0;                
+    display: flex;                      
+    justify-content: space-between; 
+    gap: 6px;                  
 }
 
 .navi ul li {
-    flex: 1;                   /* Każdy pomarańczowy klocek ma identyczną szerokość, dzieląc przestrzeń po równo */
+    flex: 1;                   
 }
 
-/* WYGLĄD POMARAŃCZOWYCH PRZYCISKÓW MENU */
 .navi ul li a {
-    display: block;            /* Sprawia, że cały pomarańczowy prostokąt (a nie tylko sam napis) staje się klikalny */
-    color: #ffffff;            /* Czysty, biały kolor czcionki na przyciskach */        
-    text-decoration: none;     /* Usuwa standardowe, mało estetyczne podkreślenie linku */
-    font-family: Arial, sans-serif; /* Krój pisma przycisków */
-    font-size: 14px;           /* KOREKTA: Zwiększamy z 13px do 14px – napisy są znacznie czytelniejsze w szerszym menu */
-    font-weight: bold;         /* Wyraźne pogrubienie czcionki, by napisy rzucały się w oczy */
-    padding: 10px 2px;          /* Wewnętrzny oddech w przycisku (góra/dół oraz boki), było 8px   */    
-    background-color: #ef8206; /* Główny, pomarańczowy odcień przycisku Stanisława */ 
-    border-radius: 15px;       /* Zaokrąglenie rogów pojedynczego przycisku */    
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Dodaje subtelny trójwymiarowy cień pod każdym przyciskiem */
-    white-space: nowrap;       /* ZAKAZ ŁAMANIA TEKSTU: Napis na przycisku zawsze utrzyma się w jednej linii */   
-    text-align: center;        /* Idealne centrowanie napisu wewnątrz pomarańczowego bloku */
+    display: block;            
+    color: #ffffff;                    
+    text-decoration: none;     
+    font-family: Arial, sans-serif; 
+    font-size: 14px;           
+    font-weight: bold;         
+    padding: 10px 2px;              
+    background-color: #ef8206; 
+    border-radius: 15px;           
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3); 
+    white-space: nowrap;          
+    text-align: center;        
 }
 
-/* EFEKT NAJECHANIA MYSZKĄ NA PRZYCISK MENU */
 .navi ul li a:hover {
-    background-color: #ff9922; /* Zmiana tła na jaśniejszy, żywszy pomarańcz po najechaniu kursorem */
-    color: #000000;            /* Zmiana koloru napisu na głęboką czarną dla doskonałego kontrastu */
+    background-color: #ff9922; 
+    color: #000000;            
 }
 
-/*  ====================================================================
-        6. Stylizacja tekstu bloku środkowego podstrony
-      ====================================================================  */
+/* ==========================================================================
+   6. STYLIZACJA TEKSTU BLOKU ŚRODKOWEGO
+   ========================================================================== */
 .text11 {
-	       font-family: Arial; font-size: 26px;
-		   color: #452603; text-align: justify; 
-		   text-indent: 2cm;
-		   margin-left: 70px; margin-right: 70px; margin-top: 45px;   /*   Było margin-top: -25px; i tekst wpływał pod górny, brązowy pasek. Wartości margin-left i margin-right, powodują odpowiednie oddalenie tekstu od obu pionowych krawędzi podstrony  */
-                  text-align: justify;       /* Wyrównuje tekst jednocześnie do lewej i prawej krawędzi (jak w książce lub gazecie) */
-                text-justify: inter-character; /* Rozkłada dodatkowe odstępy między poszczególne znaki, a nie tylko między słowa (brak wielkich dziur) */
-                hyphens: auto;             /* Włącza automatyczne, inteligentne dzielenie i przenoszenie słów na końcu linii */		   
-           }
+    font-family: Arial; font-size: 26px;
+    color: #452603; text-align: justify; 
+    text-indent: 2cm;
+    margin-left: 70px; margin-right: 70px; margin-top: 45px;   
+    text-justify: inter-character; 
+    hyphens: auto;             
+}
 		   
 .text22 {
-	       font-family: Comic Sans MS; font-size: 24px;
-		   color: #452603; text-align: justify; 
-		   text-indent: 2cm;
-		   margin-left: 150px; margin-right: 150px;
-		   text-align: justify;       /* Wyrównuje tekst jednocześnie do lewej i prawej krawędzi (jak w książce lub gazecie) */
-                text-justify: inter-character; /* Rozkłada dodatkowe odstępy między poszczególne znaki, a nie tylko między słowa (brak wielkich dziur) */
-                hyphens: auto;             /* Włącza automatyczne, inteligentne dzielenie i przenoszenie słów na końcu linii */
-           }
+    font-family: Comic Sans MS; font-size: 24px;
+    color: #452603; text-align: justify; 
+    text-indent: 2cm;
+    margin-left: 150px; margin-right: 150px;
+    text-justify: inter-character; 
+    hyphens: auto;             
+}
 		   
 .text33 {
-	       font-family: Comic Sans MS; font-size: 20px;
-		   color: #452603; text-align: justify; 
-		   text-indent: 2cm;
-		   margin-left: 70px; margin-right: 70px;
-		   text-align: justify;       /* Wyrównuje tekst jednocześnie do lewej i prawej krawędzi (jak w książce lub gazecie) */
-                text-justify: inter-character; /* Rozkłada dodatkowe odstępy między poszczególne znaki, a nie tylko między słowa (brak wielkich dziur) */
-                hyphens: auto;             /* Włącza automatyczne, inteligentne dzielenie i przenoszenie słów na końcu linii */
-           }
+    font-family: Comic Sans MS; font-size: 20px;
+    color: #452603; text-align: justify; 
+    text-indent: 2cm;
+    margin-left: 70px; margin-right: 70px;
+    text-justify: inter-character; 
+    hyphens: auto;             
+}
 		   
 /* ==========================================================================
-   7. NOWOCZESNA SIATKA ZDJĘĆ - WERSJA Z AUTOMATYCZNYM EFEKTEM KEN BURNSA (ZDJĘCIA PARZYSTE)
+   7. GŁÓWNY SZEF GALERII - INTEGRACJA PIKSELOWA 1200PX
    ========================================================================== */
- /* 1. GŁÓWNY SZEF GALERII - Zabezpiecza brązowe tło niezależnie od tła strony */
 .galeria-kontener {    
-    width: 95%;                 /* Szerokość wykraczająca poza oś tekstu, było 1000px i szerokość odsłania zbędne tło, np. białe wokól kontenera ze zdjęciami, a wartość 100%, powoduję nadmierne wypełniania paska, wartość 95% jest wizualnie właściwa!  */   
-    margin: 0px auto;             /* KOTWICA CENTROWANIA: Trzyma blok na środku, było 40px; wpisanie 0px; spowodowało, że kntener ze zdjęciami dotknął poziomych krawędzi szachownicy i dolnego paska, przesuwając się w pionie */    
-    background-color: #5c3a21;     /* TARCZA BRĄZU: Stałe tło pod zdjęciami, odporne na przyszłe pirackie mapy! */
-    padding: 30px 25px 5px 25px;   /* KSIĄŻKOWY MARGINES: 30px od góry, 25px po bokach, 5px od dołu wewnętrznego tła */
-    border-radius: 0px;           /* ELEGANCJA: Delikatne zaokrąglenie brązowego bloku, pasujące do rogów zdjęć, było 20px, teraz kontener jest prostokątem ze zdjęciami, bez zaokrągleń rogów */
-    box-sizing: border-box;
+    width: 1200px;                 /* IDEALNE SPASOWANIE: Identyczna szerokość jak nagłówek i stopka */   
+    margin: 0 auto;                
+    background-color: #5c3a21;     
+    padding: 30px 25px 5px 25px;   
+    border-radius: 0px;           
+    box-sizing: border-box;        /* PILNUJE WYMIARÓW: Padding nie rozepchnie nam 1200px na boki */
 }
 
-/* 2. POJEDYNCZY RZĄD - Rozsuwa kafelki */
+/* 2. POJEDYNCZY RZĄD */
 .container1 {                          
     width: 100%;
-    display: flex;                     /* Aktywuje elastyczny układ Flexbox dla rzędu */        
-    flex-direction: row;               /* Układa kafelki poziomo od lewej do prawej */    
-    justify-content: space-between;    /* TA WŁAŚCIWOŚĆ ROZSUWA ZDJĘCIA: Tworzy idealne, równe odstępy między kafelkami  */
-    align-items: flex-start;           /* Wyrównuje pudełka od góry, aby podpisy były w jednej linii */
+    display: flex;                             
+    flex-direction: row;                   
+    justify-content: space-between;    
+    align-items: flex-start;           
     margin-bottom: 35px;               
     box-sizing: border-box;
 }
 
 /* 3. PUDEŁKO NA ZDJĘCIE I PODPIS */
 .foto-box { 
-    width: 180px;                 /* ZMIANA: Zwiększamy szerokość zdjęcia z 150px do 180px, żeby ładnie urosły */     
+    width: 180px;                      
     display: flex;
-    flex-direction: column;       /* Układa zdjęcie i napis jedno pod drugim */     
-    align-items: center;              /* WYŚRODKOWANIE: Środkuje podpis idealnie pod osią obrazka */   
-    gap: 12px;                          /* ODDECH: Idealny odstęp między dolną krawędzią zdjęcia a napisem */
+    flex-direction: column;            
+    align-items: center;                 
+    gap: 12px;                          
     box-sizing: border-box;
-     /* USUNIĘTO "overflow: hidden: Dzięki temu podpisy i ramki żyją bezpiecznie! Wcześniej byó: overflow: hidden;   jako:  BEZPIECZNIK: Zdjęcie podczas powiększania nie wyjdzie poza obszar kafelka! Bezpiecznik nie działał i psuł wygląd */
 }
 
 /* 4. STYLIZACJA PODPISÓW POD ZDJĘCIAMI */
 .foto-box span {
-     font-style: italic;
-    font-family: "Comic Sans MS", cursive, sans-serif;    /* Pański ulubiony, przyjazny krój czcionki */
-    font-size: 16px;                    /* Czytelna, elegancka wielkość dla numeracji */
-    font-weight: bold;                 /* Pogrubienie numerów */  
-    color: #fbff00;                    /* Głęboki brąz pasujący do motywu biura, był  #452603 gdy w HTML była właściwość: <div id="ramka">, czego efektem BYŁY ZDJĘCIA NA TLE SZACHOWNICY. USUNIĘCIE STAMTĄD JEJ, SPOWODOWAŁO, ŻE ZDJĘCIA POJAWIŁY SIĘ NA TLE KOLORU: #5c3a21   */
-    text-align: center;                /* Dodatkowe zabezpieczenie centrowania tekstu */
-    white-space: nowrap;          /* BLACHY NAZW: Blokada łamania tekstu podpisu do nowej linii */     
+    font-style: italic;
+    font-family: "Comic Sans MS", cursive, sans-serif;    
+    font-size: 16px;                    
+    font-weight: bold;                 
+    color: #fbff00;                    
+    text-align: center;                
+    white-space: nowrap;               
 }
 
 /* 5. KONTROLA NAD SAMYMI OBRAZKAMI */
 .foto-box img {
-    width: 100%;                        /* Obrazek idealnie wypełnia szerokość pudełka (150px) */
-    height: 100px;                     /* Sztywna, zsynchronizowana wysokość dla każdego zdjęcia */
-    object-fit: cover;                  /* INTELIGENTNY KADR: Przeglądarka docina kadr, brak brzydkich spłaszczeń */
-    border-radius: 15px;                /* Pańskie eleganckie zaokrąglenie rogów */
-    border: 3px solid #452603;          /* Tradycyjna, pancerna brązowa ramka okalająca fotografię */
+    width: 100%;                        
+    height: 100px;                     
+    object-fit: cover;                  
+    border-radius: 15px;                
+    border: 3px solid #452603;          
     display: block;
-      box-sizing: border-box;
-    }
-
-/* ===========================================================================================================================
-   AKTYWACJA EFEKTU KEN BURNSA DLA ZDJĘĆ PARZYSTYCH (2, 4, 6, 8, 10, 12, 14),   AKTYWACJA EFEKTU KEN BURNSA PRZEZ DEDYKOWANĄ KLASĘ .kb
-   ==========================================================================================================================   */
-/* ==========================================================================
-   PANCERNY KOSZYCZEK I AUTOMATYCZNA ANIMACJA DLA ZDJĘĆ PARZYSTYCH (.kb)
-   ========================================================================== */
-
-/* Koszyczek kadrujący - to on trzyma wymiar, zaokrąglenie i pancerną brązową ramkę */
-.foto-box.kb .kadrowanie {
-    width: 180px;                      /* Identyczna szerokość jak kafelek */
-    height: 100px;                     /* Identyczna wysokość */
-    border-radius: 15px;               /* Pańskie zaokrąglenie rogów */
-    border: 3px solid #452603;         /* Tradycyjna brązowa ramka, która stoi nieruchomo! */
-    overflow: hidden;                  /* GWARANCJA SZCZELNOŚCI: Obrazek nie ma prawa wyjść poza te ramy! */
     box-sizing: border-box;
 }
 
-/* Obrazek pulsujący wewnątrz koszyczka parzystego kafelka - WYGŁADZONY */
-/* Obrazek pulsujący wewnątrz koszyczka parzystego kafelka - REAKTYWACJA KEN BURNSA */
+/* ==========================================================================
+   PANCERNY KOSZYCZEK I AUTOMATYCZNA ANIMACJA DLA ZDJĘĆ PARZYSTECH (.kb)
+   ========================================================================== */
+
+.foto-box.kb .kadrowanie {
+    width: 180px;                      
+    height: 100px;                     
+    border-radius: 15px;               
+    border: 3px solid #452603;         
+    overflow: hidden;                  
+    box-sizing: border-box;
+}
+
 .foto-box.kb .kadrowanie img {
-    width: 110%;                       /* Tradycyjne 110% ze starego kodu dla zapasu na ruch */
-    height: 110%;                      /* Tradycyjne 110% wysokości */
+    width: 110%;                       
+    height: 110%;                      
     object-fit: cover;
     border: none;                      
     border-radius: 0;                  
     display: block;
-    
-    /* PRZYWRÓCENIE ORYGINALNEJ ANIMACJI: 15 sekund, nieskończona, z płynnym odbiciem (alternate) */
     animation: automatycznyKenBurns 15s infinite alternate;
 }
 
-/* OFICJALNA RECEPTURA KINOWEGO RUCHU STANISŁAWA (ZASTYGANIE I PRZESUNIĘCIE) */
 @keyframes automatycznyKenBurns {
     0% {
-        transform: scale(1.0) translate(0, 0); /* Start: Dostojne zastygnięcie w kadrze wyjściowym */
+        transform: scale(1.0) translate(0, 0); 
     }
     50% {                                                                                                                                       
-        transform: scale(1.4) translate(-10%, -10%); /* Środek: Maksymalne przybliżenie o 40% z przesunięciem o 10% i płynne stop-klatka! */
+        transform: scale(1.4) translate(-10%, -10%); 
     }
     100% {
-        transform: scale(1.0) translate(0, 0); /* Koniec: Miękki powrót do bazy i ponowne zamarcie ruchu */
+        transform: scale(1.0) translate(0, 0); 
     }
 }
 
- /* ==========================================================================
-   8. NOWOCZESNA STOPKA STRONY (FLEXBOX NA SAMYM DOLE - POPRAWIONA KLASA)
+/* ==========================================================================
+   8. NOWOCZESNA STOPKA STRONY - INTEGRACJA PIKSELOWA 1200PX
    ========================================================================== */
 footer {
-    margin-top: auto;                  /* POTĘŻNY BEZPIECZNIK: Automatycznie dopycha całą stopkę na sam dół brązowej ramy */
+    margin-top: auto;                  
 }
 
-.stopka-pasek {
-    width: 100%;                     /* Idealne, równe spasowanie z szerokością nagłówka i środka, było 1200px; ale pasek z prawej strony nie dotykał prawej krawędzi podstrony  */
-    background-color: #452603;         /* Tradycyjny ciemny, głęboki brąz (identyczny jak w nagłówku) */
-    margin: 0;
-    padding: 40px 80px;                /* Bardzo elegancki oddech: 40px wolnego tła góra / dół oraz 80px luzu od boków */
-    box-shadow: 0px -10px 15px #000000;/* Zastosowanie minusa sprawia, że głęboki cień rzucany jest W GÓRĘ, odcinając stopkę */
-    box-sizing: border-box;
-    display: flex;                     /* Aktywuje system Flexbox dla sprawnego zarządzania tekstami */
-    justify-content: space-between;    /* Maksymalnie rozsuwa tekst lewy (biuro) i prawy (godziny) do skrajnych krawędzi stopki */
-    align-items: center;               /* Wyrównuje oba bloki tekstowe idealnie w poziomie (centrowanie w pionie stopki) */
+.stopka-pasek { 
+    width: 1200px;                     /* IDEALNE SPASOWANIE: Koniec z procentami i przesunięciami left */
+    background-color: #452603;         
+    margin: 0 auto;
+    padding: 40px 80px;                
+    box-shadow: 0px -10px 15px #000000;
+    box-sizing: border-box;            /* Gwarantuje idealne trzymanie szerokości 1200px mimo paddingu */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: relative;	
 }
-			
+
 /* NAPISY W STOPCE */
 .text4, .text5 {
-    color: #fbff00;                    /* Jaskrawożółty, piracki odcień liter w stopce witryny */
-    font-family: Arial, sans-serif;    /* Bardzo czytelny krój pisma */
-    font-size: 24px;                   /* Skorygowana wielkość czcionki dla idealnej harmonii wizualnej */
-    line-height: 1.5;                  /* Przyjemna interlinia dająca tekstowi oddech przy zawijaniu wiersza */
-    margin: 0;
+    color: #fbff00;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    line-height: 1.5;margin: 0;
 }
-
-.text4 {
-    text-align: left;                  /* Wyrównuje blok siedziby biura do lewej strony */
+.text4 { 
+    text-align: left; 
 }
-
-.text5 {
-    text-align: right;                 /* Wyrównuje blok godzin otwarcia i przesłania do prawej strony */
+.text5 { 
+    text-align: right; 
 }
-				
-/* Wyczyszczenie fabrycznych marginesów akapitów HTML w stopce */
-.text4 p, .text5 p {
-    margin: 0;                         /* Usuwa fabryczne luzy przeglądarki, gwarantując szczelność i zwartość stopki */
+.text4 p, .text5 p { 
+    margin: 0; 
 }

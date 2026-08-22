@@ -3,8 +3,8 @@
    ========================================================================== */
 
 .img {
-    background-color: #5c3a21;         /* Głęboki, piracki brąz zaleje boki szerokich monitorów */
-    background-image: none;            /* BLOKADA: Szachownica nie ma prawa uciekać na boki poza główną ramę strony */
+    /*background-color: #5c3a21;         /* Głęboki, piracki brąz zaleje boki szerokich monitorów */
+     background-image: url("MapaPiracka911.jpg");/*background-image: none;            /* BLOKADA: Szachownica nie ma prawa uciekać na boki poza główną ramę strony */
     width: 100%;                       /* Wymusza pełną szerokość warstwy tła dla stabilności układu */
     position: relative;                /* Tworzy stabilny punkt odniesienia dla reszty elementów */
     margin: 0;                         /* Zeruje domyślne marginesy przeglądarki */

@@ -7,8 +7,8 @@
 
 /* Podkład pod całe okno przeglądarki */
 .img {
-    background-color: #5c3a21;  /* Piracki, głęboki brąz zalewający boki ekranu */
-    background-image: none;     /* Blokada starej szachownicy poza główną osią strony */
+    /*background-color: #5c3a21;  /* Piracki, głęboki brąz zalewający boki ekranu */
+    background-image: url("MapaPiracka11.jpg");   /*none;     /* Blokada starej szachownicy poza główną osią strony */
     width: 100%;                /* Wymusza pełne 100% szerokości dla warstwy tła */
     position: relative;         /* Stabilizuje pozycjonowanie bazy strony */
     margin: 0;                  /* Kasuje domyślne marginesy przeglądarki */
@@ -147,9 +147,6 @@
     background: #ef8206;       /* Po najechaniu myszką, wokół napisu pojawia się mniejszy owal w kolorze jasnego pomarańczu */     
     color: #543614;            /* Kolor liter pozostaje brązowy, gwarantując idealny kontrast */
 }	
-
-
-
 
 /* ==========================================================================
    SEKCJA 4: NOWOCZESNA SIATKA ZDJĘĆ GALERII 1 (FLEXBOX MECHANIZM OBRONNY)

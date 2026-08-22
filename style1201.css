@@ -3,11 +3,6 @@
    Czyszczenie domyślnych marginesów przeglądarki, aby nic się nie rozjeżdżało.
    ========================================================================== */
 
-*, *::before, *::after { 
-    box-sizing: border-box; /* Wlicza ramki i wewnętrzne odstępy do szerokości elementu */
-    margin: 0;              /* Usuwa domyślne, fabryczne marginesy zewnętrzne */
-    padding: 0;             /* Usuwa domyślne, fabryczne marginesy wewnętrzne */
-}
 
 /* Zapobieganie ucieczce elementów poza ekran */
 body, html {
@@ -136,10 +131,8 @@ body {
     display: inline-block;                /* Zabezpieczenie ułożenia elementów w jednej linii */
 }
 
-
-
-
-/* WYGLĄD POMARAŃCZOWYCH PRZYCISKÓW ORAZ EFEKT HOVER (MENU)
+/* =========================================================================
+   WYGLĄD POMARAŃCZOWYCH PRZYCISKÓW ORAZ EFEKT HOVER (MENU)
    Powtórzenie stylów dla przycisków, aby nawigacja na tej podstronie działała identycznie.
    ========================================================================== */
 .navi ul li a {
@@ -219,7 +212,7 @@ body {
     width: 100%; height: 100%;            /* Każdy slajd zajmuje całą dostępną przestrzeń */
 }
 
-.obraz-tla {
+.obraz-tla { margin-left: -10px;
     width: 100%;                          /* Zdjęcie wypełnia całą szerokość karuzeli */
     height: 100%;                         /* Zdjęcie wypełnia całą wysokość karuzeli */
     object-fit: cover;                    /* Inteligentne docięcie grafiki – wypełnia kadr bez rozciągania i zniekształceń */
@@ -261,8 +254,6 @@ body {
 .active { 
     background-color: #ef8206;            /* Gdy dany slajd jest wyświetlany, kropka zmienia kolor na Twój pomarańcz */
 }        .active { background-color: #ef8206; }
-
-
 
 		
 /* ==========================================================================
@@ -318,7 +309,8 @@ body {
     margin-bottom: 20px !important;                /* Dodatkowy margines wymuszający odsuniecie ostatniej, czerwonej partii tekstu o dokonaniach */
 }
 
-/* SPECJALNA PODUSZKA BEZPIECZEŃSTWA DLA SILNIKÓW BRAVE/CHROME
+/* =========================================================================
+   SPECJALNA PODUSZKA BEZPIECZEŃSTWA DLA SILNIKÓW BRAVE/CHROME
    Sprytny trik rzemieślniczy: generujemy niewidzialny element na samym dole tekstu,
    który fizycznie blokuje ucinanie liter w najnowszych przeglądarkach.
    ========================================================================== */
@@ -354,9 +346,9 @@ body {
 }
 
 /* 2. Brąz na boki monitora */
-#ramka {
-    background-color: #5c3a21 !important;          /* Głęboki rzemieślniczy brąz, który zaleje boki monitora użytkownika */
-    background-image: none !important;             /* Bezwarunkowo usuwa szachownicę z boków ekranu – ma być tylko w ramie */
+#ramka { background-image: url("MapaPiracka91.jpg");
+    /*background-color: #5c3a21 !important;          /* Głęboki rzemieślniczy brąz, który zaleje boki monitora użytkownika */
+    /*background-image: none !important;             /* Bezwarunkowo usuwa szachownicę z boków ekranu – ma być tylko w ramie */
     width: 100% !important;                        /* Rozciąga tło brązowe na pełne 100% okna systemowego */
 }
 
@@ -373,7 +365,7 @@ body {
 /* 4. Bezwzględne uderzenie w pozycję kropek - spychamy je niżej na czystą szachownicę */
 .kropki-strefa {
     position: absolute !important;
-    top: 1660px !important;                        /* Przesunięcie o 40 pikseli w dół poniżej dolnej krawędzi tekstu (1300 + 320 = 1620 + 40 = 1660) */
+    top: 1672px !important;                        /* Przesunięcie o 40 pikseli w dół poniżej dolnej krawędzi tekstu (1300 + 320 = 1620 + 40 = 1660) */
     width: 1200px !important;                      /* Rozciągnięte na pełną szerokość pancernej ramy */
     left: 0 !important;
     right: 0 !important;

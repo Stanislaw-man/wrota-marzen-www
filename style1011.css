@@ -6,7 +6,7 @@ html, body {
     margin: 0;                 /* Całkowicie likwiduje białe szpary i marginesy wokół ekranu monitora */
     padding: 0;                /* Zeruje wewnętrzne odstępy okna przeglądarki */
     width: 100%;               /* Wymusza rozciągnięcie tła na pełną dostępną szerokość ekranu */
-    background-color: #5c3a21; /* Głęboki rzemieślniczy brąz na bokach monitora użytkownika */
+     background-image: url("MapaPiracka6.jpg")   /* background-color: #5c3a21; /* Głęboki rzemieślniczy brąz na bokach monitora użytkownika */ 
 }
 
 #img1 {
@@ -145,10 +145,6 @@ html, body {
     color: #000000;            /* Zmiana koloru napisu na głęboką czarną dla doskonałego kontrastu */
 }
 
-
-
-
-
 /* ==========================================================================
    3. ŚRODKOWY BLOK (DOPASOWANY DO NOWEJ RAMY STRONY)
    Przestrzeń czytelnicza, w której znajduje się tekst oraz ramki ze zdjęciami.
@@ -239,7 +235,7 @@ html, body {
 }
 
 /* ==========================================================================
-   INTERAKCJE (HOVER) DLA PRZYCISKÓW
+  5. INTERAKCJE (HOVER) DLA PRZYCISKÓW
    Definiuje widowiskową zmianę koloru tła przycisku po najechaniu na niego myszką.
    ========================================================================== */
 .button1:hover { color: yellow; background-color: #10a81f; } /* Przycisk 1 zmienia tło na soczystą zieleń */
@@ -248,7 +244,7 @@ html, body {
 .button4:hover { color: yellow; background-color: #997670; } /* Przycisk 4 zmienia tło na stonowany, pastelowy brąz */
 
 /* ==========================================================================
-   USTAWIENIA OBRAZÓW DLA FILMOWEGO EFEKTU KEN BURNS
+   6. USTAWIENIA OBRAZÓW DLA FILMOWEGO EFEKTU KEN BURNS
    Zdjęcia na starcie muszą być większe niż ramka (np. 110% lub 120%),
    aby podczas ruchu animacji nie odsłoniły się puste krawędzie pod spodem.
    ========================================================================== */
@@ -284,7 +280,7 @@ html, body {
 }
 
 /* ==========================================================================
-   REŻYSERIA ANIMACJI (@KEYFRAMES)
+   7. REŻYSERIA ANIMACJI (@KEYFRAMES)
    Krok po kroku instruujemy przeglądarkę, jak ma zmieniać skalę (scale) 
    oraz przesunięcie (translate) zdjęć w czasie, tworząc płynny efekt ruchu.
    ========================================================================== */
@@ -312,10 +308,8 @@ html, body {
     100% { transform: scale(1.0) translate(0, 0); }
 }
 
-
-
 /* ==========================================================================
-   4. DOLNY PASEK (STOPKA DOPASOWANA DO NOWEJ RAMY 1200px)
+  8. DOLNY PASEK (STOPKA DOPASOWANA DO NOWEJ RAMY 1200px)
    Ciemnobrązowy, solidny pas zamykający strukturę Strony Głównej na dole monitora.
    ========================================================================== */
 .prostokat2 {

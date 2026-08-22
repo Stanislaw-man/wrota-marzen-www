@@ -1,45 +1,51 @@
-
 <!DOCTYPE html>
-<html lang="pl-PL">
+<html lang="pl">
 <head>
-    <meta charset="utf-8">
-    <meta name="description" content="Hit biura podróży Grunia - niezapomniany wyjazd do Wenecji">
-    <link rel="stylesheet" type="text/css" href="style-hitgruni10.css">
-    <title>Hit "GRUNI"</title>				  
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <!-- Dyskretny odtwarzacz dla użytkownika -->
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style-hitgruni10.css">
+    <title>Hit Gruni</title>
+	
+	<script src="https://jquery.com"></script>
+	
+	     <!-- Dyskretny odtwarzacz dla użytkownika -->
 <!-- Twój własny, elegancki przycisk sterowania muzyką -->
 <audio id="background-audio" src="ElviraMadigan.mp3" loop></audio>
+   
+	
+	      <style>
+  /* Informujemy nagłówek, że staje się nowym punktem zero (kotwicą) dla elementów wewnątrz */
+.glowny-naglowek {
+    position: relative;
+}
 
-  <style>
-  #music-toggle-btn {
-    /* Pozycjonowanie dokładnie tam, gdzie był stary pasek */
-    position: relative; 
-    top: 150px;     /*  Było 145px;  */
-   left: 925px;   
+#music-toggle-btn {
+    /* Pozycjonowanie relatywne do nagłówka o szerokości 1200px */
+    position: absolute; 
+    top: 150px;    /* Obniżamy przycisk, aby usiadł idealnie nad żółtym menu */
+    right:80px;   /* Przytulamy go bezpiecznie do prawej krawędzi paska nagłówka */
     z-index: 999;
 
     /* Wygląd dopasowany do Twojej strony */
-    background-color: #fbff00;             /* Piękny żółty kolor z Twoich grafik, był #f7d117  */
-    color: #4a2306;            /* Ciemnobrązowy kolor tekstu */
-    border: 3px solid #ef8206;           /* Biała elegancka ramka = #ffffff, było 2px; */
-    border-radius: 20px;       /* Ładne, owalne zaokrąglenie */
-    padding: 6px 14px;         /* Odpowiednia wielkość przycisku */
+    background-color: #fbff00;             
+    color: #4a2306;            
+    border: 3px solid #ef8206;           
+    border-radius: 20px;       
+    padding: 6px 14px;         
     font-family: Arial, sans-serif;
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
-    box-shadow: 4px 4px 10px #fbff00;     /* Był delikatny cień  w rgba(0,0,0,0.3), a wartość była:  box-shadow: 0px 2px 5px rgba(0,0,0,0.3)   */
+    box-shadow: 4px 4px 10px #fbff00;     
     transition: all 0.2s ease;
-    height: 40px;         /*  Było 45px;  */
-  }
+    height: 40px;      
+}
 
-  /* Efekt po najechaniu myszką */
-  #music-toggle-btn:hover {
-    background-color: #ef8206;       /* Zmiana tła na białe przy najechaniu, było #ffffff  */
-    color: #fbff00;             /* Tekst staje się żółty =  #f7d117*/
-    border-color: #fbff00;          /*   Było #f7d117   */
-  }
+/* Efekt po najechaniu myszką */
+#music-toggle-btn:hover {
+    background-color: #ef8206;       
+    color: #fbff00;             
+    border-color: #fbff00;          
+}
 </style>
 
 <script>
@@ -108,164 +114,160 @@
     }
   }
 </script>
-
 </head>
-	   
+
 <body class="img">
 
-    <div class="kontener-strony2">
-        <header class="prostokat2">
-		
-		<!-- Twój własny, elegancki przycisk sterowania muzyką -->
-<button id="music-toggle-btn" onclick="toggleMusic()">
-  <span id="music-icon">▶</span> Odtwórz muzykę tła
-</button>
-		
-            <img src="logoszachownica.png" class="logoszachownica" alt="Logo Szachownica">
-			
-            <!-- KONTENER PRAWEJ STRONY - TRZYMA TELEFON I LISTWĘ RAZEM -->
-            <div class="prawa-sekcja-kontener1">
-                <!-- Słuchawka i numer telefonu (na górze) -->
-                <div class="kontakt-prawo1">
-                    <img src="Sluchawka11.png" class="sluchawka" alt="Słuchawka">
-                    <img src="Nrtel1.webp" class="n-rtelefonu" alt="Telefon">
-                </div>
+    <!-- SUPER KONTENER STANISŁAWA - PANCERNA KLAMRA DIZANU -->
+    <div class="super-kontener-gruni">
+        <div class="kontener-strony2">
+            <header class="prostokat2">
+                <!-- Twój własny, elegancki przycisk sterowania muzyką -->
+                <button id="music-toggle-btn" onclick="toggleMusic()">
+                    <span id="music-icon">▶</span> Odtwórz muzykę tła
+                </button>
+                
+                <img src="logoszachownica.png" class="logoszachownica" alt="Logo Szachownica">
+                
+                <!-- NAPIS PROMOCYJNY WŁOŻONY DO NAGŁÓWKA - TERAZ POZYCJONOWANIE DZIAŁA IDEALNIE -->
+                <div class="text textpozycjonowanie">
+                    <span style="color: #ef8206;"><b><i>Dzisiaj "GRUNIA"<br>PROMUJE!!</i></b></span>
+                </div> 
+                
+                <!-- KONTENER PRAWEJ STRONY - TRZYMA TELEFON I LISTWĘ RAZEM -->
+                <div class="prawa-sekcja-kontener1">
+                    <!-- Słuchawka i numer telefonu (na górze) -->
+                    <div class="kontakt-prawo1">
+                        <img src="Sluchawka11.png" class="sluchawka" alt="Słuchawka">
+                        <img src="Nrtel1.webp" class="n-rtelefonu" alt="Telefon">
+                    </div>
 
-                <!-- Żółte Menu Stanisława -->
-                <div class="navi">
-                    <ul>
-                        <li><a href="Sezamie!Otworzsie11.html">Strona główna</a></li>  
-                        <li><a href="Onas11.html">O nas</a></li>
-                        <li><a href="Galeria1.html">Galeria 1</a></li>
-                        <li><a href="Galeria2.html">Galeria 2</a></li>
-                        <li><a href="Galeria3.html">Galeria 3</a></li>
-                        <li><a href="Oferty1.html">Oferty</a></li>
-                        <li><a href="HitGruni1.html">Hit "GRUNI"</a></li>
-                        <li><a href="Kontakt1.html">Kontakt</a></li>
-                    </ul>
-                </div>
-            </div> <!-- Koniec kontenera prawej strony -->
-        </header>
-		 
-        <div class="text textpozycjonowanie">
-            <span style="color: #ef8206;"><b><i>Dzisiaj "GRUNIA"<br>PROMUJE!!</i></b></span>
-        </div> 
-		  
-                <!--  <div id="ramka">  <!--	UWAGA:   gdy w HTML była właściwość: <div id="ramka">, jej efektem BYŁY ZDJĘCIA NA TLE SZACHOWNICY. USUNIĘCIE JEJ STAMTĄD, SPOWODOWAŁO, ŻE ZDJĘCIA POJAWIŁY SIĘ NA TLE KOLORU: #5c3a21. Teraz wszystko z tym efektem, przeniesiono do CSS, do klasy "galeria-kontener"   -->
-            <p class="text11">
-                <b><i>Mamy świadomość, że realizacja MARZEŃ, potyka się najczęściej o prozaiczne - acz ważne! - czynniki (najczęściej finansowe!!).
-                <span style="color:#FF0000">Dlatego też regularną praktyką "GRUNI", jest wspieranie osób niepełnosprawnych i częściowe sponsorowanie im konkretnej, wybranej imprezy. Obowiązuje tu stała i niezmienna zasada zniżki: "50 - 30 - 10" (stosownie do stopnia niepełnosprawności). Zasada ta, dotyczy także przewodników tych osób!!</span></i></b>
-            </p>
-            
-            <p class="text22">
-                <b><i>Dzisiaj "Hitem" Biura, jest 15 dni pobytu w legendarnej Wenecji, wraz z pełnym programem rekreacyjno-turystycznym. Noclegi, całodzienne wyżywienie, basen, saunę i inne atrakcje, zapewnia hotel "Casa Petrarca" (zdj. nr 1). W naszym programie m.in.: piesze wycieczki po urokliwej Wenecji, połączone ze zwiedzaniem licznych zabytków miasta. Musimy więc być na Placu i w Bazylice "Świętego Marka" (zdj. nr 2) - wraz z jej arcydziełem "Pala d'Oro", wstąpimy do "Pałacu Doży" i wyjaśnimy sobie, skąd się wzięła poetycka nazwa "Most Westchnień" (zdj. nr 3). Odwiedzimy liczne zabytki sakralne tego miasta oraz malownicze jego zaułki i dzielnice. Odkryjemy też tajemnicę pochodzenia złowróżbnego słowa "Getto" i dlaczego powiązano je z jedną z weneckich dzielnic. Popływamy sobie po "Canale Grande" (zdj. nr 4), głównej arterii komunikacyjnej tego miasta (zdj. nr 5). Będziemy podziwiali formy i kształty architektoniczne mostów, łączących brzegi tego kanału - w tym i ten najsłynniejszy, jakim jest "Most Rialto" (zdj. nr 6). Wenecja, to właściwie archipelag wysp laguny. Popłyniemy więc na niektóre z tych wysp: na Burano (zdj. nr 7) - znaną z arcydzieł koronkarstwa (zdj. nr 8), na Murano (zdj. nr 9) - słynną z wyrobów rękodzielnictwa szklarskiego (zdj. nr 10) oraz pozwolimy owładnąć sobą przez czar wyspy Torcello (zdj. nr 11) wraz z jej najstarszymi zabytkami w cywilizacji laguny (zdj. nr 12). A gdy już i nas zmęczenie ogarnie, gdy nasze ciała zapragną słońca i kąpieli, piaski plaży Lido di Venezia (zdjęcie nr 13), otulą je i pozwolą wypocząć (zdj. nr 14). Z pełnych wrażeń, wypraw morskich, wracać będziemy do centrum miasta - naszej bazy! - pod bacznym okiem służb "Przylądka Celnego" (zdj. nr 15).</i></b>
-            </p>
+                    <!-- Żółte Menu Stanisława -->
+                    <div class="navi">
+                        <ul>
+                            <li><a href="Sezamie!Otworzsie11.html">Strona główna</a></li>  
+                            <li><a href="Onas11.html">O nas</a></li>
+                            <li><a href="Galeria1.html">Galeria 1</a></li>
+                            <li><a href="Galeria2.html">Galeria 2</a></li>
+                            <li><a href="Galeria3.html">Galeria 3</a></li>
+                            <li><a href="Oferty1.html">Oferty</a></li>
+                            <li><a href="HitGruni1.html">Hit "GRUNI"</a></li>
+                            <li><a href="Kontakt1.html">Kontakt</a></li>
+                        </ul>
+                    </div>
+                </div> <!-- Koniec kontenera prawej strony -->
+            </header>
              
-            <p class="text33">
-                 <b><i>Wszystkich tych atrakcji, doświadczysz w atrakcyjnej cenie 2500 zł od osoby. Rezydentem "GRUNI" w hotelu "Casa Petrarca" jest Cesare Maldini, którego wspierać tam będzie Nasz opiekun grupy - rozsławiony nazwiskiem! - Grzegorz Brzęczyszczykiewicz, wraz z przewodnikiem - Erosem Ramazzottim. Każdy uczestnik, opłaca indywidualnie swoje wejścia do muzeów i zwiedzanych miejsc. Posiadać więc powinien min. 100 euro środków własnych. Termin wyjazdu - klimatyzowanego i wyposażonego w sprzęt RTV - autokaru z Jeleniej Góry: 31.11.2024 r., godzina 10-ta (spóźnieni mają jeszcze szansę wejścia na pokład, tylko do granicy kraju!). Przybycie do Wenecji - godzina 19-ta. A potem?? Potem - to już tylko klękajcie Narody!!</i></b>
-            </p>
-        </div>
-			 
- <!-- POCZĄTEK SEKCJI ZDJĘĆ DLA GALERII (AUTOMATYCZNY KEN BURNS W RAMCE) -->
-<div class="galeria-kontener">
+            <!-- BLOK TEKSTOWY -->
+            <div class="tresc-strony">
+                <p class="text11">
+                    <b><i>Mamy świadomość, że realizacja MARZEŃ, potyka się najczęściej o prozaiczne - acz ważne! - czynniki (najczęściej finansowe!!).
+                    <span style="color:#FF0000">Dlatego też regularną praktyką "GRUNI", jest wspieranie osób niepełnosprawnych i częściowe sponsorowanie im konkretnej, wybranej imprezy. Obowiązuje tu stała i niezmienna zasada zniżki: "50 - 30 - 10" (stosownie do stopnia niepełnosprawności). Zasada ta, dotyczy także przewodników tych osób!!</span></i></b>
+                </p>
+                
+                <p class="text22">
+                    <b><i>Dzisiaj "Hitem" Biura, jest 15 dni pobytu w legendarnej Wenecji, wraz z pełnym programem rekreacyjno-turystycznym. Noclegi, całodzienne wyżywienie, basen, saunę i inne atrakcje, zapewnia hotel "Casa Petrarca" (zdj. nr 1). W naszym programie m.in.: piesze wycieczki po urokliwej Wenecji, połączone ze zwiedzaniem licznych zabytków miasta. Musimy więc być na Placu i w Bazylice "Świętego Marka" (zdj. nr 2) - wraz z jej arcydziełem "Pala d'Oro", wstąpimy do "Pałacu Doży" i wyjaśnimy sobie, skąd się wzięła poetycka nazwa "Most Westchnień" (zdj. nr 3). Odwiedzimy liczne zabytki sakralne tego miasta oraz malownicze jego zaułki i dzielnice. Odkryjemy też tajemnicę pochodzenia złowróżbnego słowa "Getto" i dlaczego powiązano je z jedną z weneckich dzielnic. Popływamy sobie po "Canale Grande" (zdj. nr 4), głównej arterii komunikacyjnej tego miasta (zdj. nr 5). Będziemy podziwiali formy i kształty architektoniczne mostów, łączących brzegi tego kanału - w tym i ten najsłynniejszy, jakim jest "Most Rialto" (zdj. nr 6). Wenecja, to właściwie archipelag wysp laguny. Popłyniemy więc na niektóre z tych wysp: na Burano (zdj. nr 7) - znaną z arcydzieł koronkarstwa (zdj. nr 8), na Murano (zdj. nr 9) - słynną z wyrobów rękodzielnictwa szklarskiego (zdj. nr 10) oraz pozwolimy owładnąć sobą przez czar wyspy Torcello (zdj. nr 11) wraz z jej najstarszymi zabytkami w cywilizacji laguny (zdj. nr 12). A gdy już i nas zmęczenie ogarnie, gdy nasze ciała zapragną słońca i kąpieli, piaski plaży Lido di Venezia (zdjęcie nr 13), otulą je i pozwolą wypocząć (zdj. nr 14). Z pełnych wrażeń, wypraw morskich, wracać będziemy do centrum miasta - naszej bazy! - pod bacznym okiem służb "Przylądka Celnego" (zdj. nr 15).</i></b>
+                </p>
+                 
+                <p class="text33">
+                     <b><i>Wszystkich tych atrakcji, doświadczysz w atrakcyjnej cenie 2500 zł od osoby. Rezydentem "GRUNI" w hotelu "Casa Petrarca" jest Cesare Maldini, którego wspierać tam będzie Nasz opiekun grupy - rozsławiony nazwiskiem! - Grzegorz Brzęczyszczykiewicz, wraz z przewodnikiem - Erosem Ramazzottim. Każdy uczestnik, opłaca indywidualnie swoje wejścia do muzeów i zwiedzanych miejsc. Posiadać więc powinien min. 100 euro środków własnych. Termin wyjazdu - klimatyzowanego i wyposażonego w sprzęt RTV - autokaru z Jeleniej Góry: 31.11.2024 r., godzina 10-ta (spóźnieni mają jeszcze szansę wejścia na pokład, tylko do granicy kraju!). Przybycie do Wenecji - godzina 19-ta. A potem?? Potem - to już tylko klękajcie Narody!!</i></b>
+                </p>
+            </div>
+                 
+            <!-- POCZĄTEK SEKCJI ZDJĘĆ DLA GALERII -->
+            <div class="galeria-kontener">
 
-    <!-- Rząd 1: Zdjęcia od 1 do 5 -->
-    <div class="container1">
-        <div class="foto-box">
-            <img src="HotelCasaPetrarca1.png" alt="Hotel 1">
-            <span>Zdjęcie nr 1</span>
-        </div>		
-        <div class="foto-box kb"> <!-- ZDJĘCIE 2 -->
-            <div class="kadrowanie"><img src="PlacSwMarka1.png" alt="Plac Św.Marka 1"></div>
-            <span>Zdjęcie nr 2</span>
-        </div>
-        <div class="foto-box">
-            <img src="MostWestchnien.jpg" alt="Most Westchnień">
-            <span>Zdjęcie nr 3</span>
-        </div>
-        <div class="foto-box kb"> <!-- ZDJĘCIE 4 -->
-            <div class="kadrowanie"><img src="Kanal12.jpg" alt="Kanał 12"></div>
-            <span>Zdjęcie nr 4</span>
-        </div>
-        <div class="foto-box">
-            <img src="Kanal11.jpg" alt="Kanał 11">
-            <span>Zdjęcie nr 5</span>
-        </div>
-    </div>
+                <!-- Rząd 1: Zdjęcia od 1 do 5 -->
+                <div class="container1">
+                    <div class="foto-box">
+                        <img src="HotelCasaPetrarca1.png" alt="Hotel 1">
+                        <span>Zdjęcie nr 1</span>
+                    </div>      
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="PlacSwMarka1.png" alt="Plac Św.Marka 1"></div>
+                        <span>Zdjęcie nr 2</span>
+                    </div>
+                    <div class="foto-box">
+                        <img src="MostWestchnien.jpg" alt="Most Westchnień">
+                        <span>Zdjęcie nr 3</span>
+                    </div>
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="Kanal12.jpg" alt="Kanał 12"></div>
+                        <span>Zdjęcie nr 4</span>
+                    </div>
+                    <div class="foto-box">
+                        <img src="Kanal11.jpg" alt="Kanał 11">
+                        <span>Zdjęcie nr 5</span>
+                    </div>
+                </div>
 
-    <!-- Rząd 2: Zdjęcia od 6 do 10 -->
-    <div class="container1">      
-        <div class="foto-box kb"> <!-- ZDJĘCIE 6 -->
-            <div class="kadrowanie"><img src="PlacSwMarka.jpg" alt="Plac Św.Marka"></div>
-            <span>Zdjęcie nr 6</span>
-        </div>
-        <div class="foto-box">
-            <img src="Burano1.jpg" alt="Burano 1">
-            <span>Zdjęcie nr 7</span>
-        </div>
-        <div class="foto-box kb"> <!-- ZDJĘCIE 8 -->
-            <div class="kadrowanie"><img src="Burano21.jpg" alt="Burano 21"></div>
-            <span>Zdjęcie nr 8</span>
-        </div>
-        <div class="foto-box">
-            <img src="Murano1.jpg" alt="Murano 1">
-            <span>Zdjęcie nr 9</span>
-        </div>
-        <div class="foto-box kb"> <!-- ZDJĘCIE 10 -->
-            <div class="kadrowanie"><img src="Murano3.jpg" alt="Murano 3"></div>
-            <span>Zdjęcie nr 10</span>
-        </div>
-    </div>
+                <!-- Rząd 2: Zdjęcia od 6 do 10 -->
+                <div class="container1">      
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="PlacSwMarka.jpg" alt="Plac Św.Marka"></div>
+                        <span>Zdjęcie nr 6</span>
+                    </div>
+                    <div class="foto-box">
+                        <img src="Burano1.jpg" alt="Burano 1">
+                        <span>Zdjęcie nr 7</span>
+                    </div>
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="Burano21.jpg" alt="Burano 21"></div>
+                        <span>Zdjęcie nr 8</span>
+                    </div>
+                    <div class="foto-box">
+                        <img src="Murano1.jpg" alt="Murano 1">
+                        <span>Zdjęcie nr 9</span>
+                    </div>
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="Murano3.jpg" alt="Murano 3"></div>
+                        <span>Zdjęcie nr 10</span>
+                    </div>
+                </div>
 
-    <!-- Rząd 3: Zdjęcia od 11 do 15 -->
-    <div class="container1">    
-        <div class="foto-box">
-            <img src="Torcello2.jpg" alt="Torcello 2">
-            <span>Zdjęcie nr 11</span>
-        </div>
-        <div class="foto-box kb"> <!-- ZDJĘCIE 12 -->
-            <div class="kadrowanie"><img src="Torcello1.jpg" alt="Torcello 1"></div>
-            <span>Zdjęcie nr 12</span>
-        </div>
-        <div class="foto-box">
-            <img src="LidodiVenezia1.jpg" alt="Lido di Venezia 1">
-            <span>Zdjęcie nr 13</span>
-        </div>
-        <div class="foto-box kb"> <!-- ZDJĘCIE 14 -->
-            <div class="kadrowanie"><img src="LidodiVenezia2.jpg" alt="Lido di Venezia 2"></div>
-            <span>Zdjęcie nr 14</span>
-        </div>
-        <div class="foto-box">
-            <img src="PrzyladekCelny.jpg" alt="Przyladek Celny">
-            <span>Zdjęcie nr 15</span>
-        </div>
-    </div>
+                <!-- Rząd 3: Zdjęcia od 11 do 15 -->
+                <div class="container1">    
+                    <div class="foto-box">
+                        <img src="Torcello2.jpg" alt="Torcello 2">
+                        <span>Zdjęcie nr 11</span>
+                    </div>
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="Torcello1.jpg" alt="Torcello 1"></div>
+                        <span>Zdjęcie nr 12</span>
+                    </div>
+                    <div class="foto-box">
+                        <img src="LidodiVenezia1.jpg" alt="Lido di Venezia 1">
+                        <span>Zdjęcie nr 13</span>
+                    </div>
+                    <div class="foto-box kb">
+                        <div class="kadrowanie"><img src="LidodiVenezia2.jpg" alt="Lido di Venezia 2"></div>
+                        <span>Zdjęcie nr 14</span>
+                    </div>
+                    <div class="foto-box">
+                        <img src="PrzyladekCelny.jpg" alt="Przyladek Celny">
+                        <span>Zdjęcie nr 15</span>
+                    </div>
+                </div>
 
-</div>
-<!-- KONIEC SEKCJI ZDJĘĆ -->
-			 
-			 
-						 
-	<footer>
-    <!-- Bezpieczna, nowa klasa bez polskich znaków i konfliktów -->
-    <div class="stopka-pasek">
-        <div class="text4">
-            <p><b>
-                Siedziba Biura:<br>
-                99-999 Jelenia Góra<br>
-                ul. Piętaszka Pana 2
-            </b></p>
-        </div>
-        <div class="text5">
-            <p><b>
-                Niecierpliwie więc oczekujemy Ciebie codziennie<br>
-                w godzinach: 9 - 17 i od poniedziałku do piątku!<br>
-                Wstępu MARZENIOM, nie zabraniamy NIGDY!
-            </b></p>
-        </div>
-    </div>
-</footer>
-	   
-	   </body>
-	   
-	</html>
+            </div> <!-- KONIEC SEKCJI ZDJĘĆ -->
+                         
+            <footer>
+                <div class="stopka-pasek">
+                    <div class="text4">
+                        <p><b>
+                            Siedziba Biura:<br>
+                            99-999 Jelenia Góra<br>
+                            ul. Piętaszka Pana 2
+                        </b></p>
+                    </div>
+                    <div class="text5">
+                        <p><b>
+                            Niecierpliwie więc oczekujemy Ciebie codziennie<br>
+                            w godzinach: 9 - 17 i od poniedziałku do piątku!<br>
+                            Wstępu MARZENIOM, nie zabraniamy NIGDY!
+                        </b></p>
+                    </div>
+					</div>
+					</footer>
+					</body>
+					</html>

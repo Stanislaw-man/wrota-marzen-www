@@ -1,28 +1,28 @@
 /* ==========================================
    RESET, TŁO I BLOKADA OKNA PRZEGLĄDARKI
    ========================================== */
-html, body {           background-image: url("MapaPiracka3.jpg"); /* Ścieżka do Twojej nowej mapy */
-                                  background-repeat: repeat;             /* Mapa będzie się płynnie powtarzać w pionie i poziomie */
-                                  background-attachment: fixed;          /* Opcjonalnie: mapa zostanie w miejscu podczas przewijania strony, co daje świetny efekt głębi! */
-                                   background-color: #ffffff;             /* Kolor awaryjny (zbliżony do Twojego obecnego brązu), gdyby grafika się długo ładowała */
-    margin: 0;                 /* Kasuje domyślne marginesy przeglądarki wokół krawędzi ekranu */
-    padding: 0;                /* Kasuje wewnętrzne wcięcia przeglądarki */
-   /*    background-color: #5c3a21; /* Głęboki, piracki brąz tworzący boczne pionowe słupy */
-    width: 100%;               /* Rozciąga bazę strony na pełną szerokość monitora */
-    height: 100vh;             /* Blokuje wysokość bazy idealnie do dolnej krawędzi ekranu */
-    overflow: hidden;          /* BEZKOMPROMISOWO: Odcina i ukrywa pionowy oraz poziomy pasek przewijania */
+html, body {           
+    background-image: url("MapaPiracka3.jpg"); 
+    background-repeat: repeat;             
+    background-attachment: fixed;        
+    margin: 0;                 
+    padding: 0;                
+    width: 100%;               
+    height: 100%;              /* ZAMIANA: Wymusza dopasowanie do pełnego okna bez naddatków */
+    overflow-x: hidden;        
+    overflow-y: auto;          /* Pasek pionowy pojawi się TYLKO wtedy, gdy okno będzie mniejsze niż Twój baner */
 }
 
 /* ==========================================
    KONTENER GŁÓWNY (BETONOWY FUNDAMENT)
    ========================================== */
 .kontener-glowny {
-    width: 1000px;             /* Sztywna szerokość dopasowana idealnie do Pana grafiki z GIMPa */
-    height: 100vh;             /* Rozciąga kontener pionowo od samej góry do paska zadań Windows */
-    margin: 0 auto;            /* KLUCZ: Automatycznie i sztywno centruje cały baner idealnie na środku ekranu */
-    position: relative;        /* ANCHOR (KOTWICA): Tworzy wewnętrzny układ współrzędnych dla okienek i przycisku */
-    box-sizing: border-box;    /* Wlicza obramowania i dopełnienia do ogólnej szerokości, zapobiegając rozszerzaniu */
-    overflow: hidden;          /* Dodatkowe zabezpieczenie przed "wystawaniem" elementów poza obszar baneru */
+    width: 1000px;             
+    height: 100%;              /* ZAMIANA: Kontener idealnie dopasuje się do wysokości ekranu */
+    margin: 0 auto;            
+    position: relative;        
+    box-sizing: border-box;    
+    overflow-y: visible;       /* KLUCZ: Pozwala zawartości (tekstowi o Abdulu) "wypłynąć" i aktywować scrolla w body, ale nie tworzy sztucznego pustego tła */
 }
 
 /* ==========================================
@@ -61,7 +61,7 @@ html, body {           background-image: url("MapaPiracka3.jpg"); /* Ścieżka d
     height: 100px;             /* Stała wysokość prawego okna */
     position: absolute;        /* Odczepia okno z normalnego układu i pozwala sterować nim za pomocą pikseli */
     top: 60px;                 /* Stała odległość górnej krawędzi okienka od górnej krawędzi baneru */
-    left: 815px;               /* KOTWICA PIKSELOWA: Stała odległość od lewej krawędzi baneru (symetryczna do lewego) */
+    left: 830px;               /* KOTWICA PIKSELOWA: Stała odległość od lewej krawędzi baneru (symetryczna do lewego) */
     border-radius: 30px;       /* Silne zaokrąglenie rogów prawego okienka */
     border: 5px solid #fff00f; /* Gruba, podświetlana żółta ramka wokół prawego okna */
     overflow: hidden;          /* Przycina zdjęcia wewnątrz, by nie wystawały poza zaokrąglone rogi ramki */
@@ -156,7 +156,7 @@ html, body {           background-image: url("MapaPiracka3.jpg"); /* Ścieżka d
     font-style: italic !important;   /* REZYGNACJA Z KURSYWY: Zmień na 'normal' lub zostaw 'italic' */
     font-weight: bold !important;     /* GRUBOŚĆ CZCIONKI: Wartości od 100 do 900 lub słownie 'bold' */
     letter-spacing: 1px;             /* ODSTĘPY MIĘDZY LITERAMI: Dodatkowa opcja rozstrzelenia tekstu */
-     margin: 0;                 /* Kasuje ukryte, domyślne marginesy tekstu wstrzykiwane przez przeglądarki */
+    margin: 0;                 /* Kasuje ukryte, domyślne marginesy tekstu wstrzykiwane przez przeglądarki */
     padding: 0;                /* Kasuje wszelkie wewnętrzne przesunięcia tekstu */
     text-align: center;        /* Centruje tekst w poziomie, gdy jest rozbity na dwa wiersze */
     line-height: 1.1;          /* Zwarta, rzemieślnicza interlinia chroniąca przed rozjechaniem dwóch linijek */	

@@ -32,7 +32,7 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
     z-index: 2;
     height: 60%;    /*  Było 75%  */
     width: auto;
-    top: 200px;      /*  Było 7,5%  */
+    top: 180px;      /*  Było 7,5%; i ostatnio 200px;  */
     left: 6.0%;         /*  Było 6.6%  */
     transform: skew(15deg, 5deg);     /*  Było (10deg, 5deg)  */
 }
@@ -62,7 +62,7 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 .napis-explorer {   
     position: absolute;
     top: 300px;   /*  Było 180px;  */
-    right: 10px;    /*   Było 80px;   */
+    right: 0px;    /*   Było 80px; i potem 10px; przed właściwością przesunięcia plakatu w górę: top: 180px;  */
     z-index: 3;
 }
 
@@ -91,8 +91,8 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
 .napis-rejs span:nth-child(3)  { transform: rotate(35deg) translateY(74px) translateX(10px); }
 .napis-rejs span:nth-child(4)  { transform: rotate(25deg) translateY(94px) translateX(2px); }
 .napis-rejs span:nth-child(5)  { transform: rotate(17deg) translateY(109px) translateX(10px); }
-.napis-rejs span:nth-child(6)  { transform: rotate(20deg) translateY(120px) translateX(14px);}
-.napis-rejs span:nth-child(7)  { transform: rotate(13deg) translateY(126px) translateX(1px); }
+.napis-rejs span:nth-child(6)  { transform: rotate(20deg) translateY(119px) translateX(14px);}
+.napis-rejs span:nth-child(7)  { transform: rotate(13deg) translateY(127px) translateX(1px); }
 .napis-rejs span:nth-child(8)  { transform: rotate(5deg) translateY(127px) translateX(-15px); }
 .napis-rejs span:nth-child(9)  { transform: rotate(0deg) translateY(128px) translateX(-21px); }
 .napis-rejs span:nth-child(10) { transform: rotate(-4deg) translateY(124px) translateX(-35px); }
@@ -183,7 +183,7 @@ html, body { background-image: url("Tworzenieszachownicy25x25.png"); }
     
     /* Pozycjonowanie gwoździa w górnej części plakatu */
     left: 19%; /* Dopasuj te procenty, aby gwóźdź trafił idealnie w środek góry zwoju, było 17%; */
-    top: 28.9%;    /*  Było 7%;  */
+    top: 26.5%;    /*  Było 7%; i ostatnio 28.9; przed przesunięciem plakatu w górę właściwością: top: 180px; */
     
     /* Rozmiar gwoździa dostosowany do skali projektu  */
     width: auto; /*  Było 35px   */

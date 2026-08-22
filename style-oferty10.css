@@ -1,9 +1,12 @@
+html, body {  background-image: url("MapaPiracka5.jpg"); }
+
+
 /* ==========================================================================
    1. GLOBALNE TŁO I BAZA PRZEGLĄDARKI (LIKWIDACJA PRZEŚWITÓW)
    ========================================================================== */
 
 .img {
-    background-color: #5c3a21;         /* Głęboki, piracki brąz zaleje boki szerokich monitorów */
+   /*  background-color: #5c3a21;         /* Głęboki, piracki brąz zaleje boki szerokich monitorów */
     background-image: none;            /* BLOKADA: Szachownica nie ma prawa uciekać na boki poza główną ramę strony */
     width: 100%;                       /* Wymusza pełną szerokość warstwy tła dla stabilności układu */
     position: relative;                /* Tworzy stabilny punkt odniesienia dla reszty elementów */
@@ -148,7 +151,6 @@
     background: #ef8206;               /* Po najechaniu myszką wokół napisu pojawia się mniejszy pomarańczowy owal */     
     color: #543614;                    /* Kolor liter pozostaje brązowy, gwarantując wzorowy kontrast */
 }
-
 	
 /* ==========================================================================
 	6. NOWOCZESNA STOPKA STRONY (FLEXBOX NA SAMYM DOLE)
@@ -186,10 +188,7 @@
 				/* Wyczyszczenie fabrycznych marginesów akapitów HTML w stopce */
 				.text4 p, .text5 p {
 					margin: 0;                         /* Usuwa fabryczne luzy przeglądarki, gwarantując szczelność i zwartość stopki */
-					}
-					
-					
-					
+					}					
 					
      /* ===================================================  
 	    7. Stylizacja napisu w partii środkowej podstrony "Oferty" 
