@@ -209,10 +209,16 @@
 
 <!-- PRZYCISK ZAMKNIĘCIA - ZAWSZE CENTRALNIE NAD STOPKĄ -->
 <div class="kontener-zamknij-strone">
-    <a href="index.html">
-        <button type="button" class="button1 button1cien button1text3">Sezaaamie!<br>Zamknij się!</button>
-    </a>
+    <!-- Usunęliśmy <a href="index.html"> bo dążymy do dodania rżenia osiołka, a do <button> dodaliśmy id="btn-zamknij" -->
+    <button type="button" id="btn-zamknij" class="button1 button1cien button1text3">
+        Sezaaamie!<br>Zamknij się!
+    </button>
 </div>
+
+<!-- UKRYTY ODTWARZACZ (Wklej go np. zaraz pod kontenerem przycisku), Dodano dnia 23.08.2026 r. z rżeniem OSŁA  -->
+<!-- W src wpisz dokładną nazwę swojego pliku. Jeśli zmienisz plik, zmienisz tylko nazwę tutaj! -->
+<audio id="dzwiek-osla" src="osiolek.mp3" preload="auto"></audio>
+
              <footer>
     <!-- Bezpieczna, nowa klasa bez polskich znaków i konfliktów -->
     <div class="stopka-pasek">
@@ -232,7 +238,26 @@
         </div>
     </div>
 </footer>
+
+<!--  Dodano dnia 23.08.2026 r. rżenie OSŁA  -->
+<script>
+document.getElementById('btn-zamknij').addEventListener('click', function() {
+    const audio = document.getElementById('dzwiek-osla');
+    
+    // 1. Próba odtworzenia dźwięku
+    if (audio) {
+        audio.play().catch(function(error) {
+            console.log("Przeglądarka zablokowała auto-odtwarzanie, przechodzę dalej.");
+        });
+    }
+
+    // 2. Opóźnienie przekierowania o 2300 milisekund (2.3 sekundy)
+    // Dostosuj ten czas (np. 3000 dla 3 sekund) do długości rżenia osła!
+    setTimeout(function() {
+        window.location.href = "index.html";
+    }, 2300); 
+});
+</script>
 	   
-	   </body>
-	   
+	   </body>	   
 	</html>
