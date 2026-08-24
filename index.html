@@ -5,6 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explorer</title>
     <link rel="stylesheet" href="style-index.css">
+	
+	<style>
+/* Klasa błyskawicznie ukrywająca kliknięty przycisk */
+.cyrograf-ukryty {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transition: opacity 0.05s ease;
+}
+
+/* Styl pojedynczej, potężnej iskry ognia */
+.czasteczka-ognia {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 50%;
+    z-index: 9999;
+    will-change: transform, opacity;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const przycisk = document.querySelector(".przycisk-cyrograf");
+    
+    if (przycisk) {
+        przycisk.addEventListener("click", function(e) {
+            e.preventDefault(); 
+
+            // 1. Odtwarzanie dźwięku armaty
+            const dzwiekArmaty = new Audio("ArmataMorska3.mp3");
+            dzwiekArmaty.play().catch(err => console.log("Blokada audio:", err));
+
+            // 2. Pobranie pozycji przycisku do wybuchu
+            const rect = this.getBoundingClientRect();
+            const posX = rect.left + window.scrollX;
+            const posY = rect.top + window.scrollY;
+            const width = rect.width;
+            const height = rect.height;
+
+            // 3. Generowanie potężnych, widocznych iskier ognia
+            const iloscIskier = 60;       //  Było 45;  Bezpieczny i estetyczny zakres dla tej zmiennej to od 20 do 100 iskier  --  
+            const koloryOgnia = ["#ff3300", "#ff6600", "#ffcc00", "#ffff00", "#ffffff"];  // Można wpisywać kolory ręcznie wg: 1. Angielskich nazw:  const koloryOgnia = ["red", "orange", "yellow", "gold", "white"];   2. Za pomocą kodów HEX (Tak jak jest teraz):  const koloryOgnia = ["#ff3300", "#ff6600", "#ffcc00"];  WSKAZÓWKA: Jeśli wpiszesz w wyszukiwarkę Google "Color Picker", pojawi się paleta, z której możesz skopiować dowolny taki kod.  3. Za pomocą formatu RGB (Zarządzanie przezroczystością), tzn. jeśli niektóre iskry mają być półprzezroczyste, można użyć zapisu rgba(czerwony, zielony, niebieski, PRZEZROCZYSTOŚĆ):  const koloryOgnia = ["rgba(255, 51, 0, 1)", "rgba(255, 204, 0, 0.5)"];  UWAGA: Wartość 0.5 na końcu oznacza, że iskra będzie w połowie przezroczysta!   --
+
+            for (let i = 0; i < iloscIskier; i++) {
+                const iskra = document.createElement("div");
+                iskra.classList.add("czasteczka-ognia");
+
+                // --- ZMIANA: Ponad 3-krotnie większe fragmenty (od 15px do 40px!) ---
+                const rozmiar = Math.random() * 35 + 25;   //  Było:   * 25 + 15;   Bezpieczne i estetyczne zakresy: ZŁOTY ŚRODEK DLA OGNIA:  * 35 + 25 Zakres: 25px – 60px. Efekt: Bardzo duże, komiksowe, soczyste kule ognia. Doskonale widoczne, idealne przy huku tak potężnej armaty. DYSKRETNE ISKIERKI: * 10 + 4 Zakres: 4px – 14px. Efekt: Delikatny, sypiący się pył (jak przy potarciu krzemienia). GÓRNA GRANICA ROZSĄDKU: * 50 + 30 Zakres: 30px – 80px. Efekt: Wielkie, gigantyczne bomby ognia.--
+                iskra.style.width = rozmiar + "px";
+                iskra.style.height = rozmiar + "px";
+
+                // Wyrazisty kolor ognia
+                iskra.style.backgroundColor = koloryOgnia[Math.floor(Math.random() * koloryOgnia.length)];
+
+                // Start ze środka przycisku
+                iskra.style.left = (posX + width / 2) + "px";
+                iskra.style.top = (posY + height / 2) + "px";
+
+                // --- ZMIANA: Potężniejsza poświata i blask ognia dla lepszej widoczności ---
+                iskra.style.boxShadow = `0 0 ${rozmiar * 1.5}px ${iskra.style.backgroundColor}, inset 0 0 10px #ffffff`;  // 1:  0 0 ${rozmiar * 1.5}px ${iskra.style.backgroundColor} (Blask zewnętrzny): Tworzy wokół iskry mgiełkę w jej własnym kolorze. Mnożnik * 1.5 oznacza, że blask jest o połowę większy niż sama iskra. Jeśli iskra ma 40px, to łuna wokół niej rozlewa się na szerokość 60px! To daje efekt oślepiającego wybuchu. ZAKRES: Mnożnik blasku zewnętrznego (obecnie * 1.5) Zakres: * 0.5 do * 3.0  Mniejszy (rozmiar * 0.5): Iskry będą ostre, twarde, jak rozżarzony węgiel lub stałe odłamki. Mniej światła.  Większy (rozmiar * 2.5): Gigantyczna, rozmyta aura. Iskry zmienią się w wielkie, miękkie kule czystego światła i energii.   2:  inset 0 0 10px #ffffff (Żar wewnętrzny): Słowo inset oznacza, że cień wpada do środka iskry. Wpychamy do wnętrza cząsteczki 10 pikseli białego koloru (#ffffff). Dzięki temu każda kula ognia ma biały, "najgorętszy" środek, a jej brzegi pozostają kolorowe. ZAKRES: Szerokość wewnętrznego żaru (obecnie 10px) Zakres: 0px do 20px  Brak żaru (0px): Iskra będzie miała jednolity, płaski kolor od środka aż po brzegi.  Maksymalny żar (20px): Iskra będzie niemal cała biała (bardzo gorąca), z delikatną kolorową obwódką na samym skraju.
+
+                document.body.appendChild(iskra);
+
+                // Kontrolowany rozrzut w estetycznej odległości (max ok. 90-100px)
+                const kat = Math.random() * Math.PI * 2;  //  Ten kod decyduje o kierunku lotu. Jeśli wybuch ma być okrągły. Math.PI * 2 gwarantuje, że iskry polecą losowo we wszystkich możliwych kierunkach (w górę, w dół, w lewo, w prawo). Aby armata strzelała tylko w określonym kierunku, można to zmodyfikować: Math.random() * Math.PI – iskry polecą tylko w dół (półkole).    (Math.random() * Math.PI) + Math.PI – iskry polecą tylko w górę (wystrzał pionowo w niebo).    --
+                const sila = Math.random() * 70 + 20;  // Ten kod to odległość, jaką iskry pokonają w pikselach, zanim zgasną. Działa na tej samej zasadzie co rozmiar (minimalna baza + losowy rozrzut): Liczba na końcu (20) – to minimalna odległość lotu od środka przycisku (zawsze odskoczą o te 20px). Liczba z gwiazdką (70) – to maksymalny dodatkowy zasięg.Łącznie: 70 + 20 = 90. Iskry rozlecą się w promieniu od 20 do 90 pikseli od przycisku. ZAKRESY: Estetyczny wybór: * 70 + 20 (Promień 20px - 90px) Efekt: Idealna, gęsta, ognista chmura, która trzyma się blisko przycisku. Wygląda bardzo profesjonalnie i elegancko.    Wybuch bardzo ciasny: * 30 + 10 (Promień 10px - 40px) Efekt: Ogień niemalże nie opuszcza granic przycisku. Wygląda to bardziej jak "implozja" lub małe zwarcie instalacji elektrycznej.  Wybuch rozproszony: * 150 + 50 (Promień 50px - 200px) Efekt: Iskry lecą znacznie dalej, tworząc potężną, rzadszą chmurę, która zaczyna już lekko "wystrzeliwać" poza obszar menu.   Górna granica (Ekranowa demolka): * 500 + 100  Efekt: Iskry latają po całym ekranie komputera. Tracimy wtedy efekt "rozpadu przycisku", a zyskujemy chaos.
+                const zmianaX = Math.cos(kat) * sila;
+                const zmianaY = Math.sin(kat) * sila;
+
+                // Animacja lotu: odłamki wirują, lecą i płynnie gasną
+                iskra.animate([
+                    { transform: 'translate(-50%, -50%) scale(1) rotate(0deg)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${zmianaX}px), calc(-50% + ${zmianaY}px)) scale(0.2) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: 2100, // --- ZMIANA: Wydłużony czas życia odłamka, by oko nadążyło za lotem, Było: 1100, ---
+                    easing: 'cubic-bezier(0.1, 0.8, 0.25, 1)' 
+                }).onfinish = () => iskra.remove();
+            }
+
+            // 4. Ukrycie przycisku CYROGRAF
+            this.classList.add("cyrograf-ukryty");
+
+            // 5. --- ZMIANA: Skrócony czas oczekiwania o połowę – równe 2 sekundy (2000 ms), Było: 2000 i jest 1000 ---
+            setTimeout(() => {
+                window.location.href = "WrotaMarzen.html"; 
+            }, 1000);
+        });
+    }
+});
+</script>
+
 </head>
 <body>
 
@@ -43,9 +134,12 @@
         <img src="Pirat4.jpg" alt="Czaszka i mapa" class="foto-czaszka">
         <img src="Pirat1.jpg" alt="Pirat załoga" class="foto-zaloga">
         <img src="okretpiracki1.png" alt="Fregata" class="foto-statek">
+		
+		<!-- Przycisk (Kotwica/Link do drugiej strony)  Wprowadzono dnia 24.08.2026 r., w związku z modyfikacją wybuchową CYROGRAFU stylami w <head> i skryptem JavaScript   -->
+<a href="#" class="przycisk-cyrograf">CYROGRAF</a>		
 
-        <!-- Przycisk (Kotwica/Link do drugiej strony) -->
-        <a href="WrotaMarzen.html" class="przycisk-cyrograf">CYROGRAF</a>
+        <!-- Przycisk (Kotwica/Link do drugiej strony) 
+        <a href="WrotaMarzen.html" class="przycisk-cyrograf">CYROGRAF</a>  -->
 
     </div>
 
